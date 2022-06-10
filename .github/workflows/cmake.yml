@@ -26,7 +26,6 @@ jobs:
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}  --target PACKAGE
       
-    - name: Publish
     - uses: actions/upload-artifact@v1
       with:
        path: ${{ github.workspace }}/build/3rdParty
