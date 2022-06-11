@@ -5,7 +5,7 @@
 #    created              : June 22 2020
 #    copyright            : (C) 2020 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: thirdpartydefinitions.cmake 8066 2022-03-05 15:50:33Z beaglejoe $
+#    version              : $Id: thirdpartydefinitions.cmake 8189 2022-06-11 21:16:34Z beaglejoe $
 #
 #==============================================================================
 #
@@ -35,11 +35,11 @@
 
 
 # SDL2
-set(SDL2_VERSION 2.0.20)
+set(SDL2_VERSION 2.0.22)
 set(SDL2_PROJECT SDL2-${SDL2_VERSION})
 set(SDL2_FILE ${SDL2_PROJECT}.tar.gz)
 set(SDL2_URL https://www.libsdl.org/release/${SDL2_FILE})
-set(SDL2_HASH SHA256=c56aba1d7b5b0e7e999e4a7698c70b63a3394ff9704b5f6e1c57e0c16f04dd06)
+set(SDL2_HASH SHA256=fe7cbf3127882e3fc7259a75a0cb585620272c51745d3852ab9dd87960697f2e)
 
 # SDL2_MIXER
 set(SDL2_MIXER_VERSION 2.0.4)
@@ -49,11 +49,11 @@ set(SDL2_MIXER_URL https://www.libsdl.org/projects/SDL_mixer/release/${SDL2_MIXE
 set(SDL2_MIXER_HASH SHA256=b4cf5a382c061cd75081cf246c2aa2f9df8db04bdda8dcdc6b6cca55bede2419)
 
 # OpenAL-soft
-set(OPENAL_PROJECT_VERSION 1.21.1)
+set(OPENAL_PROJECT_VERSION 1.22.0)
 set(OPENAL_PROJECT openal-soft-${OPENAL_PROJECT_VERSION})
 set(OPENAL_FILE ${OPENAL_PROJECT}.tar.bz2)
 set(OPENAL_URL https://www.openal-soft.org/openal-releases/${OPENAL_FILE})
-set(OPENAL_HASH SHA256=c8ad767e9a3230df66756a21cc8ebf218a9d47288f2514014832204e666af5d8)
+set(OPENAL_HASH SHA256=ce0f9300de3de7bc737b0be2a995619446e493521d070950eea53eddd533fc9b)
 
 message(WARNING "openal-soft versions newer than 1.19.1 need Visual Studio 2019 and CMAKE_SYSTEM_VERSION >= 10")
 set(OPENAL_C11_VERSION 1.19.1)
@@ -124,12 +124,12 @@ set(VORBIS_URL http://downloads.xiph.org/releases/vorbis/${VORBIS_FILE})
 set(VORBIS_HASH SHA256=0e982409a9c3fc82ee06e08205b1355e5c6aa4c36bca58146ef399621b0ce5ab)
 
 # expat
-set(EXPAT_VERSION 2.4.7)
+set(EXPAT_VERSION 2.4.8)
 string(REPLACE "." "_" EXPAT_TAG ${EXPAT_VERSION})
 set(EXPAT_PROJECT expat-${EXPAT_VERSION})
 set(EXPAT_FILE ${EXPAT_PROJECT}.tar.bz2)
 set(EXPAT_URL https://github.com/libexpat/libexpat/releases/download/R_${EXPAT_TAG}/${EXPAT_FILE})
-set(EXPAT_HASH SHA256=e149bdd8b90254c62b3d195da53a09bd531a4d63a963b0d8a5268d48dd2f6a65)
+set(EXPAT_HASH SHA256=a247a7f6bbb21cf2ca81ea4cbb916bfb9717ca523631675f99b3d4a5678dcd16)
 
 set(EXPAT_LEGACY_VERSION 2.2.10)
 string(REPLACE "." "_" EXPAT_LEGACY_TAG ${EXPAT_LEGACY_VERSION})
@@ -156,12 +156,12 @@ set(PNG_HASH SHA256=daeb2620d829575513e35fecc83f0d3791a620b9b93d800b763542ece939
 
 # freetype
 message(STATUS "Note special path handling (version in path) AND hard-coded 'freetype2'")
-set(FREETYPE_VERSION 2.11.1)
+set(FREETYPE_VERSION 2.12.1)
 set(FREETYPE_PROJECT freetype-${FREETYPE_VERSION})
 string(REPLACE "." "" FREETYPE_TAG ${FREETYPE_VERSION})
 set(FREETYPE_FILE ft${FREETYPE_TAG}.zip)
 set(FREETYPE_URL https://sourceforge.net/projects/freetype/files/freetype2/${FREETYPE_VERSION}/${FREETYPE_FILE}/download)
-set(FREETYPE_HASH SHA256=9cf52488ebad684d6c967ea377e4a4c0e44454a97c8a0afbf33bba27256dc69c)
+set(FREETYPE_HASH SHA256=a32bf78834279203ed726ac26b82ee6c570b5d346eaecaf1b79eec722fe7482d)
 
 message(STATUS "Note special path handling (version in path) AND hard-coded 'freetype2'")
 set(FREETYPE_LEGACY_VERSION 2.10.4)
@@ -171,11 +171,11 @@ set(FREETYPE_LEGACY_URL https://sourceforge.net/projects/freetype/files/freetype
 set(FREETYPE_LEGACY_HASH SHA256=5c78216d6c5860ef694fde1418d20d69d0ac83ab346c21eb311bd45709e0d93a)
 
 # curl
-set(CURL_VERSION 7.82.0)
+set(CURL_VERSION 7.83.1)
 set(CURL_PROJECT curl-${CURL_VERSION})
 set(CURL_FILE ${CURL_PROJECT}.tar.bz2)
-set(CURL_URL https://curl.haxx.se/download/${CURL_FILE})
-set(CURL_HASH SHA256=46d9a0400a33408fd992770b04a44a7434b3036f2e8089ac28b57573d59d371f)
+set(CURL_URL https://curl.se/download/${CURL_FILE})
+set(CURL_HASH SHA256=f539a36fb44a8260ec5d977e4e0dbdd2eee29ed90fcedaa9bc3c9f78a113bff0)
 
 # osg
 set(OSG_VERSION 3.6.5)
