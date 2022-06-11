@@ -32,9 +32,9 @@ on:
 jobs:
   # This workflow contains a single job called "greet"
   build-VS2017:
+    if: ${{ inputs.generator == 'VS2022'}}
     # The type of runner that the job will run on
     runs-on: windows-latest
-    if:  ${{ inputs.generator == 'VS2022'}}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
