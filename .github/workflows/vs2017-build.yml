@@ -15,8 +15,8 @@ jobs:
     runs-on: windows-2016
 
     strategy:
-    matrix:
-      bitness: [Win32, x64]
+      matrix:
+        bitness: [Win32, x64]
 
     steps:
     - uses: actions/checkout@v3
