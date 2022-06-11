@@ -31,8 +31,9 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "greet"
+  if: ${{ inputs.generator == 'VS2017'}}
   build-VS2017:
-    if: ${{ inputs.generator == 'VS2022'}}
+    #if: ${{ inputs.generator == 'VS2017'}}
     # The type of runner that the job will run on
     runs-on: windows-latest
 
