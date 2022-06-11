@@ -26,10 +26,10 @@ jobs:
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}  --target PACKAGE
       
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v3
       with:
        path: ${{ github.workspace }}/build/*.zip
-       name: 3rdParty.zip
+       name: 3rdParty-vs2017-win32.zip
        
 
       
