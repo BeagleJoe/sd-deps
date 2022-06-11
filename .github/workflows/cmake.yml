@@ -28,8 +28,8 @@ jobs:
       
     - uses: actions/upload-artifact@v1
       with:
-       path: ${{ github.workspace }}/build/3rdParty
-       name: Test
+       path: ${{ github.workspace }}/build/*.zip
+       name: 3rdParty.zip
        
 
       
