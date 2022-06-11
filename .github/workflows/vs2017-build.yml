@@ -17,6 +17,8 @@ jobs:
     strategy:
       matrix:
         bitness: [Win32, x64]
+        buildtype: [Release, Debug]
+        #buildtype: [Release]
 
     steps:
     - uses: actions/checkout@v3
@@ -24,16 +26,16 @@ jobs:
     - name: CMake Configure
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
-      run: cmake -B ${{github.workspace}}/build-${{env.BUILD_TYPE}}-${{ matrix.bitness}} -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -A ${{ matrix.bitness}}
+      run: cmake -B ${{github.workspace}}/build-${{matrix.buildtype}}-${{ matrix.bitness}} -DCMAKE_BUILD_TYPE=${{matrix.buildtype}} -A ${{ matrix.bitness}}
 
     - name: CMake Build
       # Build your program with the given configuration
-      run: cmake --build ${{github.workspace}}/build-${{env.BUILD_TYPE}}-${{ matrix.bitness}} --config ${{env.BUILD_TYPE}}  --target PACKAGE
+      run: cmake --build ${{github.workspace}}/build-${{matrix.buildtype}}-${{ matrix.bitness}} --config ${{matrix.buildtype}}  --target PACKAGE
       
     - uses: actions/upload-artifact@v3
       with:
-       path: ${{ github.workspace }}/build-${{env.BUILD_TYPE}}-${{ matrix.bitness}}/*.zip
-       name: 3rdParty-vs2017-${{ matrix.bitness}}.zip
+       path: ${{ github.workspace }}/build-${{matrix.buildtype}}-${{ matrix.bitness}}/*.zip
+       name: 3rdParty-vs2017-${{matrix.buildtype}}-${{ matrix.bitness}}.zip
        
 
       
