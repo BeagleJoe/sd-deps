@@ -8,23 +8,35 @@ on:
   workflow_dispatch:
     # Inputs the workflow accepts.
     inputs:
-      name:
+      generator:
         # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
+        description: 'Visual Studio version'
         # Default value if no value is explicitly provided
-        default: 'World'
+        default: 'VS2022'
         # Input has to be provided for the workflow to run
         required: true
+        type: choice
+        options:
+        - VS2017
+        - VS2019
+        - VS2022
+      bits:
+        default: '32-bit'
+        required: true
+        type: choice
+        options:
+        - 32-bit
+        - 64-bit
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "greet"
-  greet:
+  build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
-    - name: Send greeting
-      run: echo "Hello ${{ github.event.inputs.name }}"
+    - name: Building
+      run: echo "Building ${{ github.event.inputs.generator }}  ${{ github.event.inputs.bits }}"
