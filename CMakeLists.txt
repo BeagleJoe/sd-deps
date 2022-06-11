@@ -81,8 +81,54 @@ endif()
 
 set_property(DIRECTORY PROPERTY EP_BASE ${EXTERNALS_PREFIX})
 
-option(OPTION_ZLIB "Download and Build zlib" true)
+if(WIN32)
+   set(OPTION_OPENGL_HEADERS true CACHE BOOL "Download the OpenGL headers")
+endif(WIN32)
+
+option(OPTION_SDL2 "Download and Build SDL2" true)
+cmake_dependent_option(OPTION_SDL2_MIXER "Download and Build SDL2_Mixer" true "OPTION_SDL2" false)
+option(OPTION_OPENAL "Download and Build OpenAL" true)
+option(OPTION_PLIB "Download and Build PLIB" true)
+cmake_dependent_option(OPTION_PLIB_USE_HEAD "Download and Build PLIB from the latest revision" true "OPTION_PLIB" false)
+option(OPTION_JPEG "Download and Build libjpeg" true)
+option(OPTION_FREESOLID "Download and Build FreeSOLID" true)
+option(OPTION_ENET "Download and Build Enet" true)
+option(OPTION_OGG "Download and Build libogg" true)
+option(OPTION_VORBIS "Download and Build libvorbis" true)
 option(OPTION_EXPAT "Download and Build Expat" true)
+option(OPTION_ZLIB "Download and Build zlib" true)
+option(OPTION_PNG "Download and Build libpng" true)
+option(OPTION_SQLITE3 "Download and Build sqlite3" false)
+option(OPTION_FREETYPE "Download and Build FreeType" true)
+option(OPTION_CURL "Download and Build curl" true)
+option(OPTION_OSG "Download and Build OpenSceneGraph" true)
+option(OPTION_CACHED_ARCHIVES "Download from a defined cache" false)
+
+set(CACHED_URL "" CACHE STRING "Preferred url from which to download")
+
+if(OPTION_CACHED_ARCHIVES)
+   set(SDL2_URL "${CACHED_URL}/${SDL2_FILE}")
+   set(SDL2_MIXER_URL "${CACHED_URL}/${SDL2_MIXER_FILE}")
+   set(OPENAL_URL "${CACHED_URL}/${OPENAL_FILE}")
+   set(OPENAL_C11_URL "${CACHED_URL}/${OPENAL_C11_FILE}")
+   set(OPENAL_LEGACY_URL "${CACHED_URL}/${OPENAL_LEGACY_FILE}")
+   set(PLIB_HEAD_URL "${CACHED_URL}/${PLIB_HEAD_FILE}")
+   set(PLIB_URL "${CACHED_URL}/${PLIB_FILE}")
+   set(JPEG_URL "${CACHED_URL}/${JPEG_FILE}")
+   set(FREESOLID_URL "${CACHED_URL}/${FREESOLID_FILE}")
+   set(ENET_URL "${CACHED_URL}/${ENET_FILE}")
+   set(OGG_URL "${CACHED_URL}/${OGG_FILE}")
+   set(VORBIS_URL "${CACHED_URL}/${VORBIS_FILE}")
+   set(EXPAT_URL "${CACHED_URL}/${EXPAT_FILE}")
+   set(ZLIB_URL "${CACHED_URL}/${ZLIB_FILE}")
+   set(PNG_URL "${CACHED_URL}/${PNG_FILE}")
+   set(FREETYPE_URL "${CACHED_URL}/${FREETYPE_FILE}")
+   set(FREETYPE_LEGACY_URL "${CACHED_URL}/${FREETYPE_LEGACY_FILE}")
+   set(CURL_URL "${CACHED_URL}/${CURL_FILE}")
+   set(OSG_URL "${CACHED_URL}/${OSG_FILE}")
+   set(SQLITE3_URL "${CACHED_URL}/${SQLITE3_FILE}")
+endif()
+
 
 # CMAKE_BUILD_TYPE does NOT work for Visual Studio or Xcode
 # need to switch on configuration somehow
@@ -92,6 +138,201 @@ if(CMAKE_BUILD_TYPE MATCHES "Debug")
 else()
    set(SUPER_BUILD_POSTFIX "")
 endif()
+
+# OpenGL extensions (Windows only??)
+message(STATUS "OpenGL extensions (Windows only??)")
+if(WIN32 AND OPTION_OPENGL_HEADERS)
+   ExternalProject_Add(OpenGL-headers
+      URL ${CMAKE_CURRENT_SOURCE_DIR}/patches/openglheaders.zip
+      URL_HASH SHA256=344debe6e65629d70020b6da056255de56c7d4fe48194336ea2cb896fc1b545b
+      CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS})
+endif(WIN32 AND OPTION_OPENGL_HEADERS)
+
+# TODO - need to disable SDL2 static (it is overwritten by dll's SDL2.lib)
+# message(WARNING "TODO - need to disable SDL2 static (it is overwritten by dll's SDL2.lib)")
+
+if(OPTION_SDL2)
+   set(SDL2_ARGS ${EXTERNALS_CMAKE_ARGS} -DSDL_STATIC=Off -DSDL_CMAKE_DEBUG_POSTFIX=)
+   ExternalProject_Add(${SDL2_PROJECT}
+      URL ${SDL2_URL}
+      URL_HASH ${SDL2_HASH}
+      CMAKE_ARGS ${SDL2_ARGS}
+      DEPENDS OpenGL-headers)
+else(OPTION_SDL2)
+   set(SDL2_PROJECT )
+endif(OPTION_SDL2)
+
+if(OPTION_OPENAL)
+   if(MSVC_VERSION LESS 1900)
+      message(WARNING "openal-soft versions newer than 1.18.2 need Visual Studio 2015")
+      ExternalProject_Add(${OPENAL_LEGACY_PROJECT}
+         URL ${OPENAL_LEGACY_URL}
+         URL_HASH ${OPENAL_LEGACY_HASH}
+         CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS}
+         DEPENDS ${SDL2_PROJECT})
+      ExternalProject_Add_Step(${OPENAL_LEGACY_PROJECT} openal_patch_cmake
+         COMMAND ${CMAKE_COMMAND} -E copy_if_different
+         "${CMAKE_SOURCE_DIR}/patches/${OPENAL_LEGACY_PROJECT}.CMakeLists.txt"
+         "<SOURCE_DIR>/CMakeLists.txt"
+         DEPENDEES update # do after update
+         DEPENDERS patch)  # do before patch
+   elseif(MSVC_VERSION LESS 1920)
+      message(WARNING "openal-soft versions newer than 1.19.1 need Visual Studio 2019 and CMAKE_SYSTEM_VERSION >= 10")
+      ExternalProject_Add(${OPENAL_C11_PROJECT}
+         URL ${OPENAL_C11_URL}
+         URL_HASH ${OPENAL_C11_HASH}
+         CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS}
+         DEPENDS ${SDL2_PROJECT})
+   else()
+      if(${CMAKE_SYSTEM_VERSION} VERSION_LESS "10.0")
+         message(WARNING "Version ${OPENAL_PROJECT_VERSION} of openal-soft is available for Visual Studio 2019 delete the cache and specify -D CMAKE_SYSTEM_VERSION=10.0 on the command line")
+         ExternalProject_Add(${OPENAL_C11_PROJECT}
+            URL ${OPENAL_C11_URL}
+            URL_HASH ${OPENAL_C11_HASH}
+            CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS}
+            DEPENDS ${SDL2_PROJECT})
+      else()
+         ExternalProject_Add(${OPENAL_PROJECT}
+            URL ${OPENAL_URL}
+            URL_HASH ${OPENAL_HASH}
+            CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS})
+      endif()
+   endif()
+endif(OPTION_OPENAL)
+
+if(OPTION_PLIB)
+   if(OPTION_PLIB_USE_HEAD)
+      if(NOT OPTION_CACHED_ARCHIVES)
+         ExternalProject_Add(${PLIB_HEAD_PROJECT}
+            SVN_REPOSITORY  ${PLIB_SVN_REPO} #svn://svn.code.sf.net/p/plib/code/trunk
+            SVN_REVISION -r${PLIB_SVN_REVISION}  #-r2173 as of 2012-08-24 can also use -rHEAD, but specific revision is supposed to prevent calling svn update
+            CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS}
+            DEPENDS OpenGL-headers)
+            ExternalProject_Add_Step(${PLIB_HEAD_PROJECT} plib_add_cmake
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                    "${CMAKE_SOURCE_DIR}/patches/${PLIB_PROJECT}.CMakeLists.txt"
+                    "<SOURCE_DIR>/CMakeLists.txt"
+            DEPENDEES update # do after update
+            DEPENDERS patch)  # do before patch
+      else()
+         # this archive corresponds to revision 2173
+         ExternalProject_Add(${PLIB_HEAD_PROJECT}
+            URL ${PLIB_HEAD_URL}
+            URL_HASH  ${PLIB_HEAD_HASH}
+            CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS}
+            DEPENDS OpenGL-headers)
+         ExternalProject_Add_Step(${PLIB_HEAD_PROJECT} plib_add_cmake
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                    "${CMAKE_SOURCE_DIR}/patches/${PLIB_PROJECT}.CMakeLists.txt"
+                    "<SOURCE_DIR>/CMakeLists.txt"
+            DEPENDEES update # do after update
+            DEPENDERS patch)  # do before patch
+      endif()
+   else(OPTION_PLIB_USE_HEAD)
+      # this archive corresponds to revision 2131
+      ExternalProject_Add(${PLIB_PROJECT}
+         URL ${PLIB_URL}
+         URL_HASH  ${PLIB_HASH}
+         CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS}
+         DEPENDS OpenGL-headers)
+      ExternalProject_Add_Step(${PLIB_PROJECT} plib_add_cmake
+         COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                 "${CMAKE_SOURCE_DIR}/patches/${PLIB_PROJECT}.CMakeLists.txt"
+                 "<SOURCE_DIR>/CMakeLists.txt"
+         DEPENDEES update # do after update
+         DEPENDERS patch)  # do before patch
+   endif(OPTION_PLIB_USE_HEAD)
+endif(OPTION_PLIB)
+
+if(OPTION_JPEG)
+   #set(JPEG_PROJECT jpeg-9d)
+   ExternalProject_Add(${JPEG_PROJECT}
+   URL ${JPEG_URL}
+   URL_HASH ${JPEG_HASH}
+   CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS})
+   ExternalProject_Add_Step(${JPEG_PROJECT} jpeg_add_cmake
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different
+              "${CMAKE_SOURCE_DIR}/patches/${JPEG_PROJECT}.CMakeLists.txt"
+              "<SOURCE_DIR>/CMakeLists.txt"
+      DEPENDEES update # do after update
+      DEPENDERS patch)  # do before patch
+   ExternalProject_Add_Step(${JPEG_PROJECT} jpeg_config
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different
+              "<SOURCE_DIR>/jconfig.vc"
+              "<SOURCE_DIR>/jconfig.h"
+      DEPENDEES update # do after update
+      DEPENDERS patch)  # do before patch
+else(OPTION_JPEG)
+   set(JPEG_PROJECT )
+endif(OPTION_JPEG)
+
+if(OPTION_FREESOLID)
+   set(FreeSOLID_ARGS ${EXTERNALS_CMAKE_ARGS} -D'CMAKE_DEBUG_POSTFIX=""')
+   ExternalProject_Add(${FREESOLID_PROJECT}
+      DOWNLOAD_NAME ${FREESOLID_FILE}
+      URL ${FREESOLID_URL}
+      URL_HASH ${FREESOLID_HASH}
+      CMAKE_ARGS ${FreeSOLID_ARGS})
+   ExternalProject_Add_Step(${FREESOLID_PROJECT} freesolid_add_cmake
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different
+              "${CMAKE_SOURCE_DIR}/patches/${FREESOLID_PROJECT}.CMakeLists.txt"
+              "<SOURCE_DIR>/CMakeLists.txt"
+      DEPENDEES update # do after update
+      DEPENDERS patch)  # do before patch
+endif(OPTION_FREESOLID)
+
+if(OPTION_ENET)
+   ExternalProject_Add(${ENET_PROJECT}
+      URL ${ENET_URL}
+      URL_HASH ${ENET_HASH}
+      CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS})
+   ExternalProject_Add_Step(${ENET_PROJECT} enet_add_cmake
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different
+              "${CMAKE_SOURCE_DIR}/patches/${ENET_PROJECT}.CMakeLists.txt"
+              "<SOURCE_DIR>/CMakeLists.txt"
+      DEPENDEES update # do after update
+      DEPENDERS patch)  # do before patch
+else(OPTION_ENET)
+   set(ENET_PROJECT )
+endif(OPTION_ENET)
+
+if(OPTION_OGG)
+   set(OGG_ARGS ${EXTERNALS_CMAKE_ARGS} -DBUILD_SHARED_LIBS=on -DBUILD_TESTING=off -DINSTALL_DOCS=off)
+   ExternalProject_Add(${OGG_PROJECT}
+      URL ${OGG_URL}
+      URL_HASH ${OGG_HASH}
+      CMAKE_ARGS ${OGG_ARGS})
+else(OPTION_OGG)
+   set(OGG_PROJECT )
+endif(OPTION_OGG)
+
+if(OPTION_VORBIS)
+   set(VORBIS_ARGS ${EXTERNALS_CMAKE_ARGS} -DBUILD_SHARED_LIBS=on)
+   ExternalProject_Add(${VORBIS_PROJECT}
+      URL ${VORBIS_URL}
+      URL_HASH ${VORBIS_HASH}
+      CMAKE_ARGS ${VORBIS_ARGS}
+      DEPENDS ${OGG_PROJECT})
+else(OPTION_VORBIS)
+   set(VORBIS_PROJECT )
+endif(OPTION_VORBIS)
+
+if(OPTION_SDL2_MIXER)
+   set(SDL2_MIXER_ARGS ${EXTERNALS_CMAKE_ARGS} -DSUPPORT_OGG=True )
+   ExternalProject_Add(${SDL2_MIXER_PROJECT}
+      URL ${SDL2_MIXER_URL}
+      URL_HASH ${SDL2_MIXER_HASH}
+      CMAKE_ARGS ${SDL2_MIXER_ARGS}
+      DEPENDS ${SDL2_PROJECT} ${VORBIS_PROJECT} ${OGG_PROJECT} )
+      ExternalProject_Add_Step(${SDL2_MIXER_PROJECT} sdlmixer_add_cmake
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different
+              "${CMAKE_SOURCE_DIR}/patches/${SDL2_MIXER_PROJECT}.CMakeLists.txt"
+              "<SOURCE_DIR>/CMakeLists.txt"
+      DEPENDEES update # do after update
+      DEPENDERS patch)  # do before patch
+else(OPTION_SDL2_MIXER)
+   set(SDL2_MIXER_PROJECT )
+endif(OPTION_SDL2_MIXER)
 
 if(OPTION_EXPAT)
    if(MSVC_VERSION GREATER 1900)
@@ -138,11 +379,129 @@ else(OPTION_ZLIB)
    set(ZLIB_PROJECT )
 endif(OPTION_ZLIB)
 
+if(OPTION_PNG)
+   set(PNG_ARGS ${EXTERNALS_CMAKE_ARGS} -DPNG_SHARED=off -DPNG_TESTS=off -DCMAKE_DEBUG_POSTFIX='')
+   ExternalProject_Add(${PNG_PROJECT}
+      DOWNLOAD_NAME ${PNG_FILE}
+      URL ${PNG_URL}
+      URL_HASH ${PNG_HASH}
+      CMAKE_ARGS ${PNG_ARGS}
+      DEPENDS ${ZLIB_PROJECT})
+      ExternalProject_Add_Step(${PNG_PROJECT} sd_libpng_rename
+         COMMAND "${CMAKE_COMMAND}" -E rename ${EXTERNALS_INSTALL_DIR}/lib/libpng16_static${SUPER_BUILD_POSTFIX}.lib ${EXTERNALS_INSTALL_DIR}/lib/libpng.lib
+         DEPENDEES install)
+else(OPTION_PNG)
+   set(PNG_PROJECT )
+endif(OPTION_PNG)
 
+if(OPTION_SQLITE3)
+   # may only be needed for Simon's replay stuff
+   ExternalProject_Add(${SQLITE3_PROJECT}
+      URL ${SQLITE3_URL}
+      URL_HASH ${SQLITE3_HASH}
+      CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS})
+   ExternalProject_Add_Step(${SQLITE3_PROJECT} sqlite3_add_cmake
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different
+           "${CMAKE_SOURCE_DIR}/patches/sqlite3-CMakeLists.txt"
+           "<SOURCE_DIR>/CMakeLists.txt"
+      DEPENDEES update # do after update
+      DEPENDERS patch)  # do before patch
+else(OPTION_SQLITE3)
+   set(SQLITE3_PROJECT )
+endif(OPTION_SQLITE3)
+
+   # ========== For OpenSceneGraph =============
+
+if(OPTION_FREETYPE)
+   if(MSVC_VERSION GREATER 1700) # Greater than vs2012
+      # Set FREETYPE_LEGACY_PROJECT to empty string, because we will use FREETYPE_PROJECT,
+      # OpenScenegraph DEPENDS on freetype, so only one can be defined
+      set(FREETYPE_LEGACY_PROJECT )
+      set(FREETYPE_ARGS ${EXTERNALS_CMAKE_ARGS} -DBUILD_SHARED_LIBS:BOOL=false
+                                                -DDISABLE_FORCE_DEBUG_POSTFIX:BOOL=true
+                                                -DCMAKE_DISABLE_FIND_PACKAGE_BZip2=TRUE
+                                                -DCMAKE_DISABLE_FIND_PACKAGE_HarfBuzz=TRUE
+                                                -DCMAKE_DISABLE_FIND_PACKAGE_PNG=TRUE
+                                                -DCMAKE_DISABLE_FIND_PACKAGE_ZLIB=TRUE
+                                                -DCMAKE_DISABLE_FIND_PACKAGE_BrotliDec=TRUE)
+
+      ExternalProject_Add(${FREETYPE_PROJECT}
+         URL ${FREETYPE_URL}
+         URL_HASH ${FREETYPE_HASH}
+         CMAKE_ARGS ${FREETYPE_ARGS}
+         DEPENDS ${ZLIB_PROJECT} ${PNG_PROJECT})
+   else()
+      # Set FREETYPE_PROJECT to empty string, because we will use FREETYPE_LEGACY_PROJECT,
+      # OpenScenegraph DEPENDS on freetype, so only one can be defined
+      set(FREETYPE_PROJECT )
+      message(WARNING "freetype versions newer than 2.10.4 need Visual Studio 2013 or newer")
+      set(FREETYPE_LEGACY_ARGS ${EXTERNALS_CMAKE_ARGS} -DBUILD_SHARED_LIBS:BOOL=false
+                                                       -DDISABLE_FORCE_DEBUG_POSTFIX:BOOL=true
+                                                       -DCMAKE_DISABLE_FIND_PACKAGE_BZip2=TRUE
+                                                       -DCMAKE_DISABLE_FIND_PACKAGE_HarfBuzz=TRUE
+                                                       -DCMAKE_DISABLE_FIND_PACKAGE_PNG=TRUE
+                                                       -DCMAKE_DISABLE_FIND_PACKAGE_ZLIB=TRUE
+                                                       -DCMAKE_DISABLE_FIND_PACKAGE_BrotliDec=TRUE)
+
+      ExternalProject_Add(${FREETYPE_LEGACY_PROJECT}
+         URL ${FREETYPE_LEGACY_URL}
+         URL_HASH ${FREETYPE_LEGACY_HASH}
+         CMAKE_ARGS ${FREETYPE_LEGACY_ARGS}
+         DEPENDS ${ZLIB_PROJECT} ${PNG_PROJECT})
+      endif()
+else(OPTION_FREETYPE)
+   set(FREETYPE_PROJECT )
+   set(FREETYPE_LEGACY_PROJECT )
+endif(OPTION_FREETYPE)
+
+if(OPTION_CURL)
+   set(CURL_ARGS ${EXTERNALS_CMAKE_ARGS} -DBUILD_TESTING=Off -DCMAKE_DEBUG_POSTFIX= -DCURL_USE_SCHANNEL=On -DCURL_WINDOWS_SSPI=On)
+   ExternalProject_Add(${CURL_PROJECT}
+      URL ${CURL_URL}
+      URL_HASH ${CURL_HASH}
+      CMAKE_ARGS ${CURL_ARGS}
+      DEPENDS ${ZLIB_PROJECT})
+else(OPTION_CURL)
+   set(CURL_PROJECT )
+endif(OPTION_CURL)
+
+if(OPTION_OSG)
+   set(OSG_ARGS ${EXTERNALS_CMAKE_ARGS} -DCMAKE_DEBUG_POSTFIX='' 
+                                        -DUSE_3RDPARTY_BIN=Off
+                                        -DBUILD_OSG_DEPRECATED_SERIALIZERS=OFF
+                                        -DBUILD_OSG_APPLICATIONS=OFF
+                                        -DBUILD_OSG_PLUGINS_BY_DEFAULT=OFF
+                                        -DBUILD_OSG_PLUGIN_OSG=ON
+                                        -DBUILD_OSG_PLUGIN_AC=ON
+                                        -DBUILD_OSG_PLUGIN_CURL=ON
+                                        -DBUILD_OSG_PLUGIN_DDS=ON
+                                        -DBUILD_OSG_PLUGIN_FREETYPE=ON
+                                        -DBUILD_OSG_PLUGIN_GLSL=ON
+                                        -DBUILD_OSG_PLUGIN_IVE=ON
+                                        -DBUILD_OSG_PLUGIN_JPEG=ON
+                                        -DBUILD_OSG_PLUGIN_OSG=ON
+                                        -DBUILD_OSG_PLUGIN_OSGA=ON
+                                        -DBUILD_OSG_PLUGIN_OSGTGZ=ON
+                                        -DBUILD_OSG_PLUGIN_PNG=ON
+                                        -DBUILD_OSG_PLUGIN_RGB=ON
+                                        -DBUILD_OSG_PLUGIN_SHADOW=ON )
+
+   message(STATUS "Remove the block below when curl fixes their CURLConfig.cmake or OSG fixes it")
+   if(NOT ${CMAKE_VERSION} VERSION_LESS "3.17.0")
+      list(APPEND OSG_ARGS -DCURL_NO_CURL_CMAKE=ON)
+   endif(NOT ${CMAKE_VERSION} VERSION_LESS "3.17.0")
+   #message(STATUS "OSG_ARGS = ${OSG_ARGS}")
+
+   ExternalProject_Add(${OSG_PROJECT}
+      URL ${OSG_URL}
+      URL_HASH ${OSG_HASH}
+      CMAKE_ARGS ${OSG_ARGS}
+      DEPENDS ${ZLIB_PROJECT} ${CURL_PROJECT} ${FREETYPE_PROJECT}${FREETYPE_LEGACY_PROJECT} OpenGL-headers ${JPEG_PROJECT} ${PNG_PROJECT} ${SDL2_PROJECT})
+endif(OPTION_OSG)
 
 
 # no-output target, for having some files available in IDEs.
-set(DOCSOURCES COPYING LICENSE)
+set(DOCSOURCES COPYING LICENSE readme.txt)
 
 add_custom_target(rootdoc SOURCES ${DOCSOURCES})
 
