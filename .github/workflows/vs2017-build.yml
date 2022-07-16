@@ -17,8 +17,8 @@ jobs:
     strategy:
       matrix:
         bitness: [Win32, x64]
-        #buildtype: [Release, Debug]
-        buildtype: [Release]
+        buildtype: [Release, Debug]
+        #buildtype: [Release]
 
     steps:
     - uses: actions/checkout@v3
