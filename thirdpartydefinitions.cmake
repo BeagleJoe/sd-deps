@@ -5,7 +5,7 @@
 #    created              : June 22 2020
 #    copyright            : (C) 2020 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: thirdpartydefinitions.cmake 8189 2022-06-11 21:16:34Z beaglejoe $
+#    version              : $Id: thirdpartydefinitions.cmake 8318 2022-07-15 18:43:09Z beaglejoe $
 #
 #==============================================================================
 #
@@ -42,18 +42,21 @@ set(SDL2_URL https://www.libsdl.org/release/${SDL2_FILE})
 set(SDL2_HASH SHA256=fe7cbf3127882e3fc7259a75a0cb585620272c51745d3852ab9dd87960697f2e)
 
 # SDL2_MIXER
-set(SDL2_MIXER_VERSION 2.0.4)
+set(SDL2_MIXER_VERSION 2.6.1)
 set(SDL2_MIXER_PROJECT SDL2_mixer-${SDL2_MIXER_VERSION})
 set(SDL2_MIXER_FILE ${SDL2_MIXER_PROJECT}.tar.gz)
-set(SDL2_MIXER_URL https://www.libsdl.org/projects/SDL_mixer/release/${SDL2_MIXER_FILE})
-set(SDL2_MIXER_HASH SHA256=b4cf5a382c061cd75081cf246c2aa2f9df8db04bdda8dcdc6b6cca55bede2419)
+#set(SDL2_MIXER_URL https://www.libsdl.org/projects/SDL_mixer/release/${SDL2_MIXER_FILE})
+
+set(SDL2_MIXER_URL https://github.com/libsdl-org/SDL_mixer/releases/download/release-${SDL2_MIXER_VERSION}/${SDL2_MIXER_FILE})
+#https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.6.1/SDL2_mixer-2.6.1.tar.gz
+set(SDL2_MIXER_HASH SHA256=bc5c7b85f297e5f3cb34c99c366a4746922fc41365b15fd78a164dda71a861a3)
 
 # OpenAL-soft
-set(OPENAL_PROJECT_VERSION 1.22.0)
+set(OPENAL_PROJECT_VERSION 1.22.2)
 set(OPENAL_PROJECT openal-soft-${OPENAL_PROJECT_VERSION})
 set(OPENAL_FILE ${OPENAL_PROJECT}.tar.bz2)
 set(OPENAL_URL https://www.openal-soft.org/openal-releases/${OPENAL_FILE})
-set(OPENAL_HASH SHA256=ce0f9300de3de7bc737b0be2a995619446e493521d070950eea53eddd533fc9b)
+set(OPENAL_HASH SHA256=ae94cc95cda76b7cc6e92e38c2531af82148e76d3d88ce996e2928a1ea7c3d20)
 
 message(WARNING "openal-soft versions newer than 1.19.1 need Visual Studio 2019 and CMAKE_SYSTEM_VERSION >= 10")
 set(OPENAL_C11_VERSION 1.19.1)
