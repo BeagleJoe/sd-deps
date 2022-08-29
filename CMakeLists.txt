@@ -5,7 +5,7 @@
 #    created              : Aug 5 2015
 #    copyright            : (C) 2015-2022 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: CMakeLists.txt 8316 2022-07-15 17:42:26Z beaglejoe $
+#    version              : $Id: CMakeLists.txt 8432 2022-08-29 14:33:18Z beaglejoe $
 #
 #==============================================================================
 #
@@ -365,7 +365,6 @@ else(OPTION_EXPAT)
 endif(OPTION_EXPAT)
 
 if(OPTION_ZLIB)
-   set(ZLIB_PROJECT zlib-1.2.11)
    ExternalProject_Add(${ZLIB_PROJECT}
       DOWNLOAD_NAME ${ZLIB_FILE}
       URL ${ZLIB_URL}

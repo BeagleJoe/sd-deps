@@ -5,7 +5,7 @@
 #    created              : June 22 2020
 #    copyright            : (C) 2020 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: thirdpartydefinitions.cmake 8427 2022-08-25 04:48:55Z beaglejoe $
+#    version              : $Id: thirdpartydefinitions.cmake 8433 2022-08-29 14:38:25Z beaglejoe $
 #
 #==============================================================================
 #
@@ -142,12 +142,16 @@ set(EXPAT_LEGACY_URL https://github.com/libexpat/libexpat/releases/download/R_${
 set(EXPAT_LEGACY_HASH SHA256=b2c160f1b60e92da69de8e12333096aeb0c3bf692d41c60794de278af72135a5)
 
 # zlib
+# https://zlib.net/zlib-1.2.12.tar.gz
+# https://github.com/madler/zlib/archive/v1.2.12.tar.gz
 message(STATUS "Note special path handling (version in path)")
-set(ZLIB_VERSION 1.2.11)
+set(ZLIB_VERSION 1.2.12)
 set(ZLIB_PROJECT zlib-${ZLIB_VERSION})
 set(ZLIB_FILE ${ZLIB_PROJECT}.tar.gz)
-set(ZLIB_URL https://sourceforge.net/projects/libpng/files/zlib/${ZLIB_VERSION}/${ZLIB_FILE}/download)
-set(ZLIB_HASH SHA256=c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1)
+#set(ZLIB_URL https://github.com/madler/zlib/archive/v${ZLIB_VERSION}.tar.gz)
+#set(ZLIB_HASH SHA256=d8688496ea40fb61787500e863cc63c9afcbc524468cedeb478068924eb54932)
+set(ZLIB_URL https://zlib.net/${ZLIB_FILE})
+set(ZLIB_HASH SHA256=91844808532e5ce316b3c010929493c0244f3d37593afd6de04f71821d5136d9)
 
 # libpng
 message(STATUS "Note special path handling (version in path) AND hard-coded 'libpng16'")
