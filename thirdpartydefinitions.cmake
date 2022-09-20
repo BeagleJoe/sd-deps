@@ -5,7 +5,7 @@
 #    created              : June 22 2020
 #    copyright            : (C) 2020 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: thirdpartydefinitions.cmake 8531 2022-09-20 00:16:23Z beaglejoe $
+#    version              : $Id: thirdpartydefinitions.cmake 8534 2022-09-20 21:37:07Z beaglejoe $
 #
 #==============================================================================
 #
