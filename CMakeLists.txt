@@ -5,7 +5,7 @@
 #    created              : Aug 5 2015
 #    copyright            : (C) 2015-2022 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: CMakeLists.txt 8552 2022-09-25 22:33:27Z beaglejoe $
+#    version              : $Id: CMakeLists.txt 8574 2022-10-09 20:14:26Z beaglejoe $
 #
 #==============================================================================
 #
@@ -27,7 +27,7 @@
 # (hashtag) starts a comment
 cmake_minimum_required(VERSION 3.4.0 FATAL_ERROR)
 
-project(3rdParty VERSION 2.2.4)
+project(3rdParty VERSION 2.3.0)
 
 include(ExternalProject)
 include(CMakeDependentOption)
