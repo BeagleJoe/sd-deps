@@ -5,7 +5,7 @@
 #    created              : Aug 5 2015
 #    copyright            : (C) 2015-2022 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: CMakeLists.txt 8574 2022-10-09 20:14:26Z beaglejoe $
+#    version              : $Id: CMakeLists.txt 8628 2022-11-06 16:30:36Z beaglejoe $
 #
 #==============================================================================
 #
@@ -203,7 +203,8 @@ if(OPTION_OPENAL)
          ExternalProject_Add(${OPENAL_PROJECT}
             URL ${OPENAL_URL}
             URL_HASH ${OPENAL_HASH}
-            CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS})
+            CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS}
+            DEPENDS ${SDL2_PROJECT})
       endif()
    endif()
 endif(OPTION_OPENAL)
