@@ -5,7 +5,7 @@
 #    created              : June 22 2020
 #    copyright            : (C) 2020 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: thirdpartydefinitions.cmake 8628 2022-11-06 16:30:36Z beaglejoe $
+#    version              : $Id: thirdpartydefinitions.cmake 8643 2022-11-27 18:18:09Z beaglejoe $
 #
 #==============================================================================
 #
@@ -35,11 +35,17 @@
 
 
 # SDL2
-set(SDL2_VERSION 2.24.2)
+set(SDL2_VERSION 2.26.0)
 set(SDL2_PROJECT SDL2-${SDL2_VERSION})
 set(SDL2_FILE ${SDL2_PROJECT}.tar.gz)
 set(SDL2_URL https://www.libsdl.org/release/${SDL2_FILE})
-set(SDL2_HASH SHA256=b35ef0a802b09d90ed3add0dcac0e95820804202914f5bb7b0feb710f1a1329f)
+set(SDL2_HASH SHA256=8000d7169febce93c84b6bdf376631f8179132fd69f7015d4dadb8b9c2bdb295)
+
+set(SDL2_LEGACY_VERSION 2.24.2)
+set(SDL2_LEGACY_PROJECT SDL2-${SDL2_LEGACY_VERSION})
+set(SDL2_LEGACY_FILE ${SDL2_LEGACY_PROJECT}.tar.gz)
+set(SDL2_LEGACY_URL https://www.libsdl.org/release/${SDL2_LEGACY_FILE})
+set(SDL2_LEGACY_HASH SHA256=b35ef0a802b09d90ed3add0dcac0e95820804202914f5bb7b0feb710f1a1329f)
 
 # SDL2_MIXER
 set(SDL2_MIXER_VERSION 2.6.2)
@@ -153,11 +159,11 @@ set(ZLIB_HASH SHA256=b3a24de97a8fdbc835b9833169501030b8977031bcb54b3b3ac13740f84
 
 # libpng
 message(STATUS "Note special path handling (version in path) AND hard-coded 'libpng16'")
-set(PNG_VERSION 1.6.38)
+set(PNG_VERSION 1.6.39)
 set(PNG_PROJECT libpng-${PNG_VERSION})
 set(PNG_FILE ${PNG_PROJECT}.tar.gz)
 set(PNG_URL https://sourceforge.net/projects/libpng/files/libpng16/${PNG_VERSION}/${PNG_FILE}/download)
-set(PNG_HASH SHA256=e2b5e1b4329650992c041996cf1269681b341191dc07ffed816c555769cceb77)
+set(PNG_HASH SHA256=af4fb7f260f839919e5958e5ab01a275d4fe436d45442a36ee62f73e5beb75ba)
 
 # freetype
 message(STATUS "Note special path handling (version in path) AND hard-coded 'freetype2'")
