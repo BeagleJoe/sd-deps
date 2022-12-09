@@ -5,7 +5,7 @@
 #    created              : June 22 2020
 #    copyright            : (C) 2020 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: thirdpartydefinitions.cmake 8643 2022-11-27 18:18:09Z beaglejoe $
+#    version              : $Id: thirdpartydefinitions.cmake 8667 2022-12-09 23:15:31Z beaglejoe $
 #
 #==============================================================================
 #
@@ -35,11 +35,11 @@
 
 
 # SDL2
-set(SDL2_VERSION 2.26.0)
+set(SDL2_VERSION 2.26.1)
 set(SDL2_PROJECT SDL2-${SDL2_VERSION})
 set(SDL2_FILE ${SDL2_PROJECT}.tar.gz)
 set(SDL2_URL https://www.libsdl.org/release/${SDL2_FILE})
-set(SDL2_HASH SHA256=8000d7169febce93c84b6bdf376631f8179132fd69f7015d4dadb8b9c2bdb295)
+set(SDL2_HASH SHA256=02537cc7ebd74071631038b237ec4bfbb3f4830ba019e569434da33f42373e04)
 
 set(SDL2_LEGACY_VERSION 2.24.2)
 set(SDL2_LEGACY_PROJECT SDL2-${SDL2_LEGACY_VERSION})
