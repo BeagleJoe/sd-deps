@@ -114,6 +114,7 @@ option(OPTION_CURL "Download and Build curl" true)
 option(OPTION_OSG "Download and Build OpenSceneGraph" true)
 option(OPTION_GLM "Download and install GLM math headers" true)
 option(OPTION_OPENCL "Download and Build OpenCL-SDK" true)
+option(OPTION_LIBZIP "Download and Build libzip" true)
 option(OPTION_CACHED_ARCHIVES "Download from a defined cache" false)
 
 set(CACHED_URL "" CACHE STRING "Preferred url from which to download")
@@ -140,6 +141,7 @@ if(OPTION_CACHED_ARCHIVES)
    set(OSG_URL "${CACHED_URL}/${OSG_FILE}")
    set(OPTION_GLM "${CACHED_URL}/${GLM_FILE}")
    set(OPENCL_URL "${CACHED_URL}/${OPENCL_FILE}")
+   set(LIBZIP_URL "${CACHED_URL}/${LIBZIP_FILE}")
    set(SQLITE3_URL "${CACHED_URL}/${SQLITE3_FILE}")
 endif()
 
@@ -555,6 +557,23 @@ if(OPTION_OPENCL)
 else(OPTION_OPENCL)
    set(OPENCL_PROJECT )
 endif(OPTION_OPENCL)
+
+if(OPTION_LIBZIP)
+   set(LIBZIP_ARGS ${EXTERNALS_CMAKE_ARGS} -DCMAKE_DEBUG_POSTFIX=''
+                                           -DBUILD_STATIC_LIBS=true
+                                           -DBUILD_TOOLS=false
+                                           -DBUILD_REGRESS=false
+                                           -DBUILD_EXAMPLES=false
+                                           -DBUILD_DOC=false
+                                           )
+   ExternalProject_Add(${LIBZIP_PROJECT}
+      URL ${LIBZIP_URL}
+      URL_HASH ${LIBZIP_HASH}
+      CMAKE_ARGS ${LIBZIP_ARGS}
+      DEPENDS ${ZLIB_PROJECT})
+else(LIBZIP_GLM)
+   set(LIBZIP_PROJECT )
+endif(OPTION_LIBZIP)
 
 # no-output target, for having some files available in IDEs.
 set(DOCSOURCES COPYING LICENSE readme.txt)

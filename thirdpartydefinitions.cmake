@@ -212,6 +212,13 @@ set(GLM_FILE ${GLM_PROJECT}.zip)
 set(GLM_URL https://github.com/g-truc/glm/releases/download/${GLM_VERSION}/${GLM_FILE})
 set(GLM_HASH SHA256=37e2a3d62ea3322e43593c34bae29f57e3e251ea89f4067506c94043769ade4c)
 
+# libzip
+set(LIBZIP_VERSION 1.9.2)
+set(LIBZIP_PROJECT libzip-${LIBZIP_VERSION})
+set(LIBZIP_FILE ${LIBZIP_PROJECT}.tar.gz)
+set(LIBZIP_URL https://libzip.org/download/${LIBZIP_FILE})
+set(LIBZIP_HASH SHA256=fd6a7f745de3d69cf5603edc9cb33d2890f0198e415255d0987a0cf10d824c6f)
+
 # OpenCL
 set(OPENCL_VERSION v2023.02.06)
 set(OPENCL_PROJECT OpenCL-SDK-${OPENCL_VERSION})
