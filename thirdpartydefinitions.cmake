@@ -5,7 +5,7 @@
 #    created              : June 22 2020
 #    copyright            : (C) 2020 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: thirdpartydefinitions.cmake 8736 2023-02-20 16:09:14Z beaglejoe $
+#    version              : $Id$
 #
 #==============================================================================
 #
@@ -89,7 +89,7 @@ set(PLIB_HEAD_VERSION r${PLIB_SVN_REVISION})
 set(PLIB_HEAD_PROJECT plib-trunk-${PLIB_HEAD_VERSION})
 set(PLIB_HEAD_FILE plib-code-${PLIB_HEAD_VERSION}-trunk.zip)
 set(PLIB_HEAD_URL https://sourceforge.net/code-snapshots/svn/p/pl/plib/code/${PLIB_HEAD_FILE})
-set(PLIB_HEAD_HASH SHA256=395d27e3182d1e6b4f6c79bce1182040538e07dcc5357b8d7e96f10c7b77f347)
+set(PLIB_HEAD_HASH SHA256=ea55eb715657fc54601c76caabad263140cc0787a33235f3d56e62db186fc177)
 
 set(PLIB_VERSION 1.8.5)
 set(PLIB_PROJECT plib-${PLIB_VERSION})
@@ -211,3 +211,10 @@ set(GLM_PROJECT glm-${GLM_VERSION})
 set(GLM_FILE ${GLM_PROJECT}.zip)
 set(GLM_URL https://github.com/g-truc/glm/releases/download/${GLM_VERSION}/${GLM_FILE})
 set(GLM_HASH SHA256=37e2a3d62ea3322e43593c34bae29f57e3e251ea89f4067506c94043769ade4c)
+
+# OpenCL
+set(OPENCL_VERSION v2023.02.06)
+set(OPENCL_PROJECT OpenCL-SDK-${OPENCL_VERSION})
+set(OPENCL_FILE ${OPENCL_PROJECT}-Source.tar.gz)
+set(OPENCL_URL https://github.com/KhronosGroup/OpenCL-SDK/releases/download/${OPENCL_VERSION}/${OPENCL_FILE})
+set(OPENCL_HASH SHA256=dffe4fa68781a8c14e3168d9bc79bccd15ea50573705d81e26dedf229adcfcbb)

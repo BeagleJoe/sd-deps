@@ -5,7 +5,7 @@
 #    created              : Aug 5 2015
 #    copyright            : (C) 2015-2022 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: CMakeLists.txt 8736 2023-02-20 16:09:14Z beaglejoe $
+#    version              : $Id$
 #
 #==============================================================================
 #
@@ -108,11 +108,12 @@ option(OPTION_VORBIS "Download and Build libvorbis" true)
 option(OPTION_EXPAT "Download and Build Expat" true)
 option(OPTION_ZLIB "Download and Build zlib" true)
 option(OPTION_PNG "Download and Build libpng" true)
-option(OPTION_SQLITE3 "Download and Build sqlite3" false)
+option(OPTION_SQLITE3 "Download and Build sqlite3" true)
 option(OPTION_FREETYPE "Download and Build FreeType" true)
 option(OPTION_CURL "Download and Build curl" true)
 option(OPTION_OSG "Download and Build OpenSceneGraph" true)
-option(OPTION_GLM "Download and install GLM math headers" false)
+option(OPTION_GLM "Download and install GLM math headers" true)
+option(OPTION_OPENCL "Download and Build OpenCL-SDK" true)
 option(OPTION_CACHED_ARCHIVES "Download from a defined cache" false)
 
 set(CACHED_URL "" CACHE STRING "Preferred url from which to download")
@@ -138,6 +139,7 @@ if(OPTION_CACHED_ARCHIVES)
    set(CURL_URL "${CACHED_URL}/${CURL_FILE}")
    set(OSG_URL "${CACHED_URL}/${OSG_FILE}")
    set(OPTION_GLM "${CACHED_URL}/${GLM_FILE}")
+   set(OPENCL_URL "${CACHED_URL}/${OPENCL_FILE}")
    set(SQLITE3_URL "${CACHED_URL}/${SQLITE3_FILE}")
 endif()
 
@@ -537,6 +539,22 @@ if(OPTION_GLM)
 else(OPTION_GLM)
    set(GLM_PROJECT )
 endif(OPTION_GLM)
+
+if(OPTION_OPENCL)
+   set(OPENCL_ARGS ${EXTERNALS_CMAKE_ARGS} -DCMAKE_DEBUG_POSTFIX=''
+                                           -DBUILD_TESTING=OFF
+                                           -DBUILD_DOCS=OFF
+                                           -DBUILD_TESTS=OFF
+                                           -DOPENCL_SDK_BUILD_SAMPLES=OFF
+                                           )
+   ExternalProject_Add(${OPENCL_PROJECT}
+      URL ${OPENCL_URL}
+      URL_HASH ${OPENCL_HASH}
+      CMAKE_ARGS ${OPENCL_ARGS}
+      DEPENDS OpenGL-headers)
+else(OPTION_OPENCL)
+   set(OPENCL_PROJECT )
+endif(OPTION_OPENCL)
 
 # no-output target, for having some files available in IDEs.
 set(DOCSOURCES COPYING LICENSE readme.txt)
