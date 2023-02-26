@@ -199,11 +199,26 @@ set(OSG_HASH SHA256=0e9e3e4cc6f463f21a901934a95e9264b231a1d5db90f72dcb4b8cc94b0d
 
 # sqlite3
 message(STATUS "Note the YEAR in the path AND hard-coded filename")
-set(SQLITE3_VERSION 3.36.0)
+set(SQLITE3_VERSION 3.41.0)
 set(SQLITE3_PROJECT sqlite3-${SQLITE3_VERSION})
-set(SQLITE3_FILE sqlite-amalgamation-3360000.zip)
-set(SQLITE3_URL https://www.sqlite.org/2021/${SQLITE3_FILE})
-set(SQLITE3_HASH SHA256=999826fe4c871f18919fdb8ed7ec9dd8217180854dd1fe21eea96aed36186729)
+set(SQLITE3_FILE sqlite-amalgamation-3410000.zip)
+set(SQLITE3_URL https://www.sqlite.org/2023/${SQLITE3_FILE})
+set(SQLITE3_HASH SHA256=146ce189b67fdbefbf2d72cdc81e198d07ff643614cc9102e9bf063255e8e7e1)
+
+#https://github.com/mosra/corrade/archive/refs/tags/v2020.06.tar.gz
+# corrade
+set(CORRADE_VERSION 2020.06)
+set(CORRADE_PROJECT corrade-${CORRADE_VERSION})
+set(CORRADE_FILE corrade-${CORRADE_VERSION}.tar.gz)
+set(CORRADE_URL https://github.com/mosra/corrade/archive/refs/tags/v${CORRADE_VERSION}.tar.gz)
+set(CORRADE_HASH SHA256=2a62492ccc717422b72f2596a3e1a6a105b9574aa9467917f12d19ef3aab1341)
+
+# magnum
+set(MAGNUM_VERSION 2020.06)
+set(MAGNUM_PROJECT magnum-${MAGNUM_VERSION})
+set(MAGNUM_FILE magnum-${MAGNUM_VERSION}.tar.gz)
+set(MAGNUM_URL https://github.com/mosra/magnum/archive/refs/tags/v${MAGNUM_VERSION}.tar.gz)
+set(MAGNUM_HASH SHA256=98dfe802e56614e4e6bf750d9b693de46a5ed0c6eb479b0268f1a20bf34268bf)
 
 # GLM
 set(GLM_VERSION 0.9.9.8)

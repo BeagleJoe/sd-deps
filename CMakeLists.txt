@@ -115,6 +115,8 @@ option(OPTION_OSG "Download and Build OpenSceneGraph" true)
 option(OPTION_GLM "Download and install GLM math headers" true)
 option(OPTION_OPENCL "Download and Build OpenCL-SDK" true)
 option(OPTION_LIBZIP "Download and Build libzip" true)
+option(OPTION_CORRADE "Download and Build Corrade" true)
+option(OPTION_MAGNUM "Download and Build Magnum" true)
 option(OPTION_CACHED_ARCHIVES "Download from a defined cache" false)
 
 set(CACHED_URL "" CACHE STRING "Preferred url from which to download")
@@ -142,6 +144,8 @@ if(OPTION_CACHED_ARCHIVES)
    set(OPTION_GLM "${CACHED_URL}/${GLM_FILE}")
    set(OPENCL_URL "${CACHED_URL}/${OPENCL_FILE}")
    set(LIBZIP_URL "${CACHED_URL}/${LIBZIP_FILE}")
+   set(CORRADE_URL "${CACHED_URL}/${CORRADE_FILE}")
+   set(MAGNUM_URL "${CACHED_URL}/${MAGNUM_FILE}")
    set(SQLITE3_URL "${CACHED_URL}/${SQLITE3_FILE}")
 endif()
 
@@ -574,6 +578,27 @@ if(OPTION_LIBZIP)
 else(LIBZIP_GLM)
    set(LIBZIP_PROJECT )
 endif(OPTION_LIBZIP)
+
+if(OPTION_CORRADE)
+   set(CORRADE_ARGS ${EXTERNALS_CMAKE_ARGS} -DBUILD_SHARED_LIBS=on -DCMAKE_DEBUG_POSTFIX='' -DBUILD_DEPRECATED=off)
+   ExternalProject_Add(${CORRADE_PROJECT}
+      URL ${CORRADE_URL}
+      URL_HASH ${CORRADE_HASH}
+      CMAKE_ARGS ${CORRADE_ARGS})
+else(OPTION_CORRADE)
+   set(CORRADE_PROJECT )
+endif(OPTION_CORRADE)
+
+if(OPTION_MAGNUM)
+   set(MAGNUM_ARGS ${EXTERNALS_CMAKE_ARGS} -DBUILD_SHARED_LIBS=on -DWITH_WGLCONTEXT=on -DCMAKE_DEBUG_POSTFIX='')
+   ExternalProject_Add(${MAGNUM_PROJECT}
+      URL ${MAGNUM_URL}
+      URL_HASH ${MAGNUM_HASH}
+      CMAKE_ARGS ${MAGNUM_ARGS}
+      DEPENDS ${CORRADE_PROJECT} ${SDL2_PROJECT})
+else(OPTION_MAGNUM)
+   set(MAGNUM_PROJECT )
+endif(OPTION_MAGNUM)
 
 # no-output target, for having some files available in IDEs.
 set(DOCSOURCES COPYING LICENSE readme.txt)
