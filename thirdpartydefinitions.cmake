@@ -64,7 +64,7 @@ set(OPENAL_FILE ${OPENAL_PROJECT}.tar.bz2)
 set(OPENAL_URL https://www.openal-soft.org/openal-releases/${OPENAL_FILE})
 set(OPENAL_HASH SHA256=057dcf96c3cdfcf40159800a93f57740fe79c2956f76247bee10e436b6657183)
 
-message(WARNING "openal-soft versions newer than 1.19.1 need Visual Studio 2019 and CMAKE_SYSTEM_VERSION >= 10")
+message(WARNING "openal-soft versions newer than 1.19.1 need Visual Studio 2017 and CMAKE_SYSTEM_VERSION >= 10")
 set(OPENAL_C11_VERSION 1.19.1)
 set(OPENAL_C11_PROJECT openal-soft-${OPENAL_C11_VERSION})
 set(OPENAL_C11_FILE ${OPENAL_C11_PROJECT}.tar.bz2)
@@ -240,3 +240,12 @@ set(OPENCL_PROJECT OpenCL-SDK-${OPENCL_VERSION})
 set(OPENCL_FILE ${OPENCL_PROJECT}-Source.tar.gz)
 set(OPENCL_URL https://github.com/KhronosGroup/OpenCL-SDK/releases/download/${OPENCL_VERSION}/${OPENCL_FILE})
 set(OPENCL_HASH SHA256=dffe4fa68781a8c14e3168d9bc79bccd15ea50573705d81e26dedf229adcfcbb)
+
+# VulkanSceneGraph
+set(VSG_VERSION 1.0.2)
+set(VSG_PROJECT VulkanSceneGraph-${VSG_VERSION})
+set(VSG_FILE VulkanSceneGraph-${VSG_VERSION}.tar.gz)
+set(VSG_URL https://github.com/vsg-dev/VulkanSceneGraph/archive/refs/tags/${VSG_FILE})
+set(VSG_HASH SHA256=526acd58d6e3a3bd3c3169996e0616d5c4a01e793dc064e8d20217791743bab5)
+
+#https://github.com/vsg-dev/VulkanSceneGraph/archive/refs/tags/VulkanSceneGraph-1.0.2.tar.gz

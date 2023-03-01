@@ -117,6 +117,7 @@ option(OPTION_OPENCL "Download and Build OpenCL-SDK" true)
 option(OPTION_LIBZIP "Download and Build libzip" true)
 option(OPTION_CORRADE "Download and Build Corrade" true)
 option(OPTION_MAGNUM "Download and Build Magnum" true)
+option(OPTION_VSG "Download and Build VulkanSceneGraph" true)
 option(OPTION_CACHED_ARCHIVES "Download from a defined cache" false)
 
 set(CACHED_URL "" CACHE STRING "Preferred url from which to download")
@@ -146,6 +147,7 @@ if(OPTION_CACHED_ARCHIVES)
    set(LIBZIP_URL "${CACHED_URL}/${LIBZIP_FILE}")
    set(CORRADE_URL "${CACHED_URL}/${CORRADE_FILE}")
    set(MAGNUM_URL "${CACHED_URL}/${MAGNUM_FILE}")
+   set(VSG_URL "${CACHED_URL}/${VSG_FILE}")
    set(SQLITE3_URL "${CACHED_URL}/${SQLITE3_FILE}")
 endif()
 
@@ -167,6 +169,26 @@ if(WIN32 AND OPTION_OPENGL_HEADERS)
       URL_HASH SHA256=344debe6e65629d70020b6da056255de56c7d4fe48194336ea2cb896fc1b545b
       CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS})
 endif(WIN32 AND OPTION_OPENGL_HEADERS)
+
+if(OPTION_ZLIB)
+   ExternalProject_Add(${ZLIB_PROJECT}
+      DOWNLOAD_NAME ${ZLIB_FILE}
+      URL ${ZLIB_URL}
+      URL_HASH ${ZLIB_HASH}
+      CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS}
+      PATCH_COMMAND ${CMAKE_COMMAND} -E remove -f <SOURCE_DIR>/zconf.h)
+   ExternalProject_Add_Step(${ZLIB_PROJECT} sd_zlib_remove_dll
+      COMMAND "${CMAKE_COMMAND}" -E remove -f ${EXTERNALS_INSTALL_DIR}/bin/zlib${SUPER_BUILD_POSTFIX}.dll
+      DEPENDEES install)
+   ExternalProject_Add_Step(${ZLIB_PROJECT} sd_zlib_remove_lib
+      COMMAND "${CMAKE_COMMAND}" -E remove -f ${EXTERNALS_INSTALL_DIR}/lib/zlib${SUPER_BUILD_POSTFIX}.lib
+      DEPENDEES sd_zlib_remove_dll)
+   ExternalProject_Add_Step(${ZLIB_PROJECT} sd_zlib_rename_lib
+      COMMAND "${CMAKE_COMMAND}" -E rename ${EXTERNALS_INSTALL_DIR}/lib/zlibstatic${SUPER_BUILD_POSTFIX}.lib ${EXTERNALS_INSTALL_DIR}/lib/zlib.lib
+      DEPENDEES sd_zlib_remove_lib)
+else(OPTION_ZLIB)
+   set(ZLIB_PROJECT )
+endif(OPTION_ZLIB)
 
 # TODO - need to disable SDL2 static (it is overwritten by dll's SDL2.lib)
 # message(WARNING "TODO - need to disable SDL2 static (it is overwritten by dll's SDL2.lib)")
@@ -193,8 +215,9 @@ else(OPTION_SDL2)
 endif(OPTION_SDL2)
 
 if(OPTION_OPENAL)
+   set(OPENAL_ARGS ${EXTERNALS_CMAKE_ARGS})
    if(MSVC_VERSION LESS 1900)
-      message(WARNING "openal-soft versions newer than 1.18.2 need Visual Studio 2015")
+      #message(WARNING "openal-soft versions newer than 1.18.2 need Visual Studio 2015")
       ExternalProject_Add(${OPENAL_LEGACY_PROJECT}
          URL ${OPENAL_LEGACY_URL}
          URL_HASH ${OPENAL_LEGACY_HASH}
@@ -206,8 +229,8 @@ if(OPTION_OPENAL)
          "<SOURCE_DIR>/CMakeLists.txt"
          DEPENDEES update # do after update
          DEPENDERS patch)  # do before patch
-   elseif(MSVC_VERSION LESS 1920)
-      message(WARNING "openal-soft versions newer than 1.19.1 need Visual Studio 2019 and CMAKE_SYSTEM_VERSION >= 10")
+   elseif(MSVC_VERSION LESS 1910)
+      #message(WARNING "openal-soft versions newer than 1.19.1 need Visual Studio 2017 and CMAKE_SYSTEM_VERSION >= 10")
       ExternalProject_Add(${OPENAL_C11_PROJECT}
          URL ${OPENAL_C11_URL}
          URL_HASH ${OPENAL_C11_HASH}
@@ -215,19 +238,14 @@ if(OPTION_OPENAL)
          DEPENDS ${SDL2_PROJECT})
    else()
       if(${CMAKE_SYSTEM_VERSION} VERSION_LESS "10.0")
-         message(WARNING "Version ${OPENAL_PROJECT_VERSION} of openal-soft is available for Visual Studio 2019 delete the cache and specify -D CMAKE_SYSTEM_VERSION=10.0 on the command line")
-         ExternalProject_Add(${OPENAL_C11_PROJECT}
-            URL ${OPENAL_C11_URL}
-            URL_HASH ${OPENAL_C11_HASH}
-            CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS}
-            DEPENDS ${SDL2_PROJECT})
-      else()
-         ExternalProject_Add(${OPENAL_PROJECT}
-            URL ${OPENAL_URL}
-            URL_HASH ${OPENAL_HASH}
-            CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS}
-            DEPENDS ${SDL2_PROJECT})
+        set(OPENAL_ARGS ${EXTERNALS_CMAKE_ARGS} -DCMAKE_SYSTEM_VERSION=10.0)
       endif()
+      #message(WARNING "Version ${OPENAL_PROJECT_VERSION} of openal-soft is available for Visual Studio 2017 delete the cache and specify -D CMAKE_SYSTEM_VERSION=10.0 on the command line")
+      ExternalProject_Add(${OPENAL_PROJECT}
+         URL ${OPENAL_URL}
+         URL_HASH ${OPENAL_HASH}
+         CMAKE_ARGS ${OPENAL_ARGS}
+         DEPENDS ${SDL2_PROJECT} ${ZLIB_PROJECT})
    endif()
 endif(OPTION_OPENAL)
 
@@ -392,26 +410,6 @@ if(OPTION_EXPAT)
 else(OPTION_EXPAT)
    set(EXPAT_PROJECT )
 endif(OPTION_EXPAT)
-
-if(OPTION_ZLIB)
-   ExternalProject_Add(${ZLIB_PROJECT}
-      DOWNLOAD_NAME ${ZLIB_FILE}
-      URL ${ZLIB_URL}
-      URL_HASH ${ZLIB_HASH}
-      CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS}
-      PATCH_COMMAND ${CMAKE_COMMAND} -E remove -f <SOURCE_DIR>/zconf.h)
-   ExternalProject_Add_Step(${ZLIB_PROJECT} sd_zlib_remove_dll
-      COMMAND "${CMAKE_COMMAND}" -E remove -f ${EXTERNALS_INSTALL_DIR}/bin/zlib${SUPER_BUILD_POSTFIX}.dll
-      DEPENDEES install)
-   ExternalProject_Add_Step(${ZLIB_PROJECT} sd_zlib_remove_lib
-      COMMAND "${CMAKE_COMMAND}" -E remove -f ${EXTERNALS_INSTALL_DIR}/lib/zlib${SUPER_BUILD_POSTFIX}.lib
-      DEPENDEES sd_zlib_remove_dll)
-   ExternalProject_Add_Step(${ZLIB_PROJECT} sd_zlib_rename_lib
-      COMMAND "${CMAKE_COMMAND}" -E rename ${EXTERNALS_INSTALL_DIR}/lib/zlibstatic${SUPER_BUILD_POSTFIX}.lib ${EXTERNALS_INSTALL_DIR}/lib/zlib.lib
-      DEPENDEES sd_zlib_remove_lib)
-else(OPTION_ZLIB)
-   set(ZLIB_PROJECT )
-endif(OPTION_ZLIB)
 
 if(OPTION_PNG)
    set(PNG_ARGS ${EXTERNALS_CMAKE_ARGS} -DPNG_SHARED=off -DPNG_TESTS=off -DCMAKE_DEBUG_POSTFIX='')
@@ -599,6 +597,17 @@ if(OPTION_MAGNUM)
 else(OPTION_MAGNUM)
    set(MAGNUM_PROJECT )
 endif(OPTION_MAGNUM)
+
+if(OPTION_VSG)
+   set(VSG_ARGS ${EXTERNALS_CMAKE_ARGS} -DCMAKE_DEBUG_POSTFIX='')# -DBUILD_SHARED_LIBS=on)
+   ExternalProject_Add(${VSG_PROJECT}
+      URL ${VSG_URL}
+      URL_HASH ${VSG_HASH}
+      CMAKE_ARGS ${VSG_ARGS})
+else(OPTION_VSG)
+   set(VSG_PROJECT )
+endif(OPTION_VSG)
+
 
 # no-output target, for having some files available in IDEs.
 set(DOCSOURCES COPYING LICENSE readme.txt)
