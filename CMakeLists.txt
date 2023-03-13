@@ -5,7 +5,7 @@
 #    created              : Aug 5 2015
 #    copyright            : (C) 2015-2022 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: CMakeLists.txt 8736 2023-02-20 16:09:14Z beaglejoe $
+#    version              : $Id: CMakeLists.txt 8787 2023-03-13 13:45:07Z beaglejoe $
 #
 #==============================================================================
 #
@@ -31,7 +31,7 @@ IF(POLICY CMP0135)
    CMAKE_POLICY(SET CMP0135 NEW)
 ENDIF(POLICY CMP0135)
 
-project(3rdParty VERSION 2.3.0)
+project(3rdParty VERSION 2.4.0)
 
 include(ExternalProject)
 include(CMakeDependentOption)
