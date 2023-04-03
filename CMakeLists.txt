@@ -5,7 +5,7 @@
 #    created              : Aug 5 2015
 #    copyright            : (C) 2015-2022 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: CMakeLists.txt 8795 2023-03-13 17:13:16Z beaglejoe $
+#    version              : $Id: CMakeLists.txt 8859 2023-04-03 16:51:56Z beaglejoe $
 #
 #==============================================================================
 #
@@ -137,7 +137,7 @@ if(OPTION_CACHED_ARCHIVES)
    set(FREETYPE_LEGACY_URL "${CACHED_URL}/${FREETYPE_LEGACY_FILE}")
    set(CURL_URL "${CACHED_URL}/${CURL_FILE}")
    set(OSG_URL "${CACHED_URL}/${OSG_FILE}")
-   set(OPTION_GLM "${CACHED_URL}/${GLM_FILE}")
+   set(GLM_URL "${CACHED_URL}/${GLM_FILE}")
    set(SQLITE3_URL "${CACHED_URL}/${SQLITE3_FILE}")
 endif()
 
