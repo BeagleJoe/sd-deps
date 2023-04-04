@@ -5,7 +5,7 @@
 #    created              : Aug 5 2015
 #    copyright            : (C) 2015-2023 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: CMakeLists.txt 8859 2023-04-03 16:51:56Z beaglejoe $
+#    version              : $Id: CMakeLists.txt 8863 2023-04-04 03:50:09Z beaglejoe $
 #
 #==============================================================================
 #
