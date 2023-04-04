@@ -3,9 +3,9 @@
 #
 #    file                 : CMakeLists.txt
 #    created              : Aug 5 2015
-#    copyright            : (C) 2015-2022 Joe Thompson
+#    copyright            : (C) 2015-2023 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: CMakeLists.txt 8795 2023-03-13 17:13:16Z beaglejoe $
+#    version              : $Id: CMakeLists.txt 8863 2023-04-04 03:50:09Z beaglejoe $
 #
 #==============================================================================
 #
@@ -112,8 +112,9 @@ option(OPTION_SQLITE3 "Download and Build sqlite3" false)
 option(OPTION_FREETYPE "Download and Build FreeType" true)
 option(OPTION_CURL "Download and Build curl" true)
 option(OPTION_OSG "Download and Build OpenSceneGraph" true)
-option(OPTION_GLM "Download and install GLM math headers" false)
+option(OPTION_GLM "Download and install GLM math headers" true)
 option(OPTION_LIBZIP "Download and Build libzip" true)
+option(OPTION_TINYGLTF "Download and Build TinyGLTF" true)
 option(OPTION_CACHED_ARCHIVES "Download from a defined cache" false)
 
 set(CACHED_URL "" CACHE STRING "Preferred url from which to download")
@@ -141,6 +142,7 @@ if(OPTION_CACHED_ARCHIVES)
    set(GLM_URL "${CACHED_URL}/${GLM_FILE}")
    set(LIBZIP_URL "${CACHED_URL}/${LIBZIP_FILE}")
    set(SQLITE3_URL "${CACHED_URL}/${SQLITE3_FILE}")
+   set(TINYGLTF_URL "${CACHED_URL}/${TINYGLTF_FILE}")
 endif()
 
 
@@ -552,6 +554,18 @@ if(OPTION_LIBZIP)
 else(OPTION_LIBZIP)
    set(LIBZIP_PROJECT )
 endif(OPTION_LIBZIP)
+
+if(OPTION_TINYGLTF)
+   set(TINYGLTF_ARGS ${EXTERNALS_CMAKE_ARGS} -D TINYGLTF_BUILD_LOADER_EXAMPLE=Off 
+                                             -D CMAKE_DEBUG_POSTFIX= )
+   ExternalProject_Add(${TINYGLTF_PROJECT}
+      URL ${TINYGLTF_URL}
+      URL_HASH ${TINYGLTF_HASH}
+      CMAKE_ARGS ${TINYGLTF_ARGS})
+else(OPTION_TINYGLTF)
+   set(TINYGLTF_PROJECT )
+endif(OPTION_TINYGLTF)
+
 
 # no-output target, for having some files available in IDEs.
 set(DOCSOURCES COPYING LICENSE readme.txt)
