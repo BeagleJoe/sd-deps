@@ -28,7 +28,7 @@ cmake_minimum_required(VERSION 2.8)
 
 project(sqlite3 C)
 
-set(VERSION "3.41.1")
+set(VERSION "3.41.2")
 
 
 #include_directories(include)
