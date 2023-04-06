@@ -32,7 +32,7 @@ jobs:
 
     - name: CMake Build
       # Build your program with the given configuration
-      run: cmake --build ${{github.workspace}}/build-${{matrix.buildtype}}-${{ matrix.bitness}} --config ${{matrix.buildtype}}  --target all_build
+      run: cmake --build ${{github.workspace}}/build-${{matrix.buildtype}}-${{ matrix.bitness}} --config ${{matrix.buildtype}}  --target PACKAGE
       
     - uses: actions/upload-artifact@v3
       with:
