@@ -5,7 +5,7 @@
 #    created              : June 22 2020
 #    copyright            : (C) 2020 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: thirdpartydefinitions.cmake 8831 2023-03-20 15:58:41Z beaglejoe $
+#    version              : $Id: thirdpartydefinitions.cmake 8868 2023-04-06 03:00:03Z beaglejoe $
 #
 #==============================================================================
 #
@@ -35,11 +35,11 @@
 
 
 # SDL2
-set(SDL2_VERSION 2.26.4)
+set(SDL2_VERSION 2.26.5)
 set(SDL2_PROJECT SDL2-${SDL2_VERSION})
 set(SDL2_FILE ${SDL2_PROJECT}.tar.gz)
 set(SDL2_URL https://www.libsdl.org/release/${SDL2_FILE})
-set(SDL2_HASH SHA256=1a0f686498fb768ad9f3f80b39037a7d006eac093aad39cb4ebcc832a8887231)
+set(SDL2_HASH SHA256=ad8fea3da1be64c83c45b1d363a6b4ba8fd60f5bde3b23ec73855709ec5eabf7)
 
 set(SDL2_LEGACY_VERSION 2.24.2)
 set(SDL2_LEGACY_PROJECT SDL2-${SDL2_LEGACY_VERSION})
@@ -249,3 +249,10 @@ set(VSG_URL https://github.com/vsg-dev/VulkanSceneGraph/archive/refs/tags/${VSG_
 set(VSG_HASH SHA256=526acd58d6e3a3bd3c3169996e0616d5c4a01e793dc064e8d20217791743bab5)
 
 #https://github.com/vsg-dev/VulkanSceneGraph/archive/refs/tags/VulkanSceneGraph-1.0.2.tar.gz
+
+# TinyGLTF 
+set(TINYGLTF_VERSION 2.8.5)
+set(TINYGLTF_PROJECT TinyGLTF-${TINYGLTF_VERSION})
+set(TINYGLTF_FILE ${TINYGLTF_PROJECT}.tar.gz)
+set(TINYGLTF_URL https://github.com/syoyo/tinygltf/archive/refs/tags/v${TINYGLTF_VERSION}.tar.gz)
+set(TINYGLTF_HASH SHA256=c2deafb54d987e97636334055fa689b8186ee8aa5e4769914ffd2775be20b51a)

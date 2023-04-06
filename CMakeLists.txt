@@ -3,9 +3,9 @@
 #
 #    file                 : CMakeLists.txt
 #    created              : Aug 5 2015
-#    copyright            : (C) 2015-2022 Joe Thompson
+#    copyright            : (C) 2015-2023 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: CMakeLists.txt 8795 2023-03-13 17:13:16Z beaglejoe $
+#    version              : $Id: CMakeLists.txt 8868 2023-04-06 03:00:03Z beaglejoe $
 #
 #==============================================================================
 #
@@ -118,6 +118,7 @@ option(OPTION_LIBZIP "Download and Build libzip" true)
 option(OPTION_CORRADE "Download and Build Corrade" true)
 option(OPTION_MAGNUM "Download and Build Magnum" true)
 option(OPTION_VSG "Download and Build VulkanSceneGraph" true)
+option(OPTION_TINYGLTF "Download and Build TinyGLTF" true)
 option(OPTION_CACHED_ARCHIVES "Download from a defined cache" false)
 
 set(CACHED_URL "" CACHE STRING "Preferred url from which to download")
@@ -149,6 +150,7 @@ if(OPTION_CACHED_ARCHIVES)
    set(MAGNUM_URL "${CACHED_URL}/${MAGNUM_FILE}")
    set(VSG_URL "${CACHED_URL}/${VSG_FILE}")
    set(SQLITE3_URL "${CACHED_URL}/${SQLITE3_FILE}")
+   set(TINYGLTF_URL "${CACHED_URL}/${TINYGLTF_FILE}")
 endif()
 
 
@@ -195,7 +197,7 @@ endif(OPTION_ZLIB)
 
 if(OPTION_SDL2)
    if(MSVC_VERSION GREATER 1700)
-      set(SDL2_ARGS ${EXTERNALS_CMAKE_ARGS} -DSDL_STATIC=Off -DSDL_CMAKE_DEBUG_POSTFIX=)
+      set(SDL2_ARGS ${EXTERNALS_CMAKE_ARGS} -DSDL_STATIC=Off -DSDL_TEST=Off -DSDL_CMAKE_DEBUG_POSTFIX=)
       ExternalProject_Add(${SDL2_PROJECT}
          URL ${SDL2_URL}
          URL_HASH ${SDL2_HASH}
@@ -607,6 +609,18 @@ if(OPTION_VSG)
 else(OPTION_VSG)
    set(VSG_PROJECT )
 endif(OPTION_VSG)
+
+
+if(OPTION_TINYGLTF)
+   set(TINYGLTF_ARGS ${EXTERNALS_CMAKE_ARGS} -D TINYGLTF_BUILD_LOADER_EXAMPLE=Off 
+                                             -D CMAKE_DEBUG_POSTFIX= )
+   ExternalProject_Add(${TINYGLTF_PROJECT}
+      URL ${TINYGLTF_URL}
+      URL_HASH ${TINYGLTF_HASH}
+      CMAKE_ARGS ${TINYGLTF_ARGS})
+else(OPTION_TINYGLTF)
+   set(TINYGLTF_PROJECT )
+endif(OPTION_TINYGLTF)
 
 
 # no-output target, for having some files available in IDEs.
