@@ -5,7 +5,7 @@
 #    created              : Aug 5 2015
 #    copyright            : (C) 2015-2023 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: CMakeLists.txt 8863 2023-04-04 03:50:09Z beaglejoe $
+#    version              : $Id: CMakeLists.txt 8868 2023-04-06 03:00:03Z beaglejoe $
 #
 #==============================================================================
 #
@@ -189,7 +189,7 @@ endif(OPTION_ZLIB)
 
 if(OPTION_SDL2)
    if(MSVC_VERSION GREATER 1700)
-      set(SDL2_ARGS ${EXTERNALS_CMAKE_ARGS} -DSDL_STATIC=Off -DSDL_CMAKE_DEBUG_POSTFIX=)
+      set(SDL2_ARGS ${EXTERNALS_CMAKE_ARGS} -DSDL_STATIC=Off -DSDL_TEST=Off -DSDL_CMAKE_DEBUG_POSTFIX=)
       ExternalProject_Add(${SDL2_PROJECT}
          URL ${SDL2_URL}
          URL_HASH ${SDL2_HASH}
