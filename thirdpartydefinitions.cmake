@@ -5,7 +5,7 @@
 #    created              : June 22 2020
 #    copyright            : (C) 2020 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: thirdpartydefinitions.cmake 8868 2023-04-06 03:00:03Z beaglejoe $
+#    version              : $Id: thirdpartydefinitions.cmake 8879 2023-04-11 22:20:08Z beaglejoe $
 #
 #==============================================================================
 #
@@ -58,11 +58,11 @@ set(SDL2_MIXER_URL https://github.com/libsdl-org/SDL_mixer/releases/download/rel
 set(SDL2_MIXER_HASH SHA256=7a6ba86a478648ce617e3a5e9277181bc67f7ce9876605eea6affd4a0d6eea8f)
 
 # OpenAL-soft
-set(OPENAL_PROJECT_VERSION 1.23.0)
+set(OPENAL_PROJECT_VERSION 1.23.1)
 set(OPENAL_PROJECT openal-soft-${OPENAL_PROJECT_VERSION})
 set(OPENAL_FILE ${OPENAL_PROJECT}.tar.bz2)
 set(OPENAL_URL https://www.openal-soft.org/openal-releases/${OPENAL_FILE})
-set(OPENAL_HASH SHA256=057dcf96c3cdfcf40159800a93f57740fe79c2956f76247bee10e436b6657183)
+set(OPENAL_HASH SHA256=796f4b89134c4e57270b7f0d755f0fa3435b90da437b745160a49bd41c845b21)
 
 message(WARNING "openal-soft versions newer than 1.19.1 need Visual Studio 2017 and CMAKE_SYSTEM_VERSION >= 10")
 set(OPENAL_C11_VERSION 1.19.1)
@@ -251,8 +251,8 @@ set(VSG_HASH SHA256=526acd58d6e3a3bd3c3169996e0616d5c4a01e793dc064e8d20217791743
 #https://github.com/vsg-dev/VulkanSceneGraph/archive/refs/tags/VulkanSceneGraph-1.0.2.tar.gz
 
 # TinyGLTF 
-set(TINYGLTF_VERSION 2.8.5)
+set(TINYGLTF_VERSION 2.8.6)
 set(TINYGLTF_PROJECT TinyGLTF-${TINYGLTF_VERSION})
 set(TINYGLTF_FILE ${TINYGLTF_PROJECT}.tar.gz)
 set(TINYGLTF_URL https://github.com/syoyo/tinygltf/archive/refs/tags/v${TINYGLTF_VERSION}.tar.gz)
-set(TINYGLTF_HASH SHA256=c2deafb54d987e97636334055fa689b8186ee8aa5e4769914ffd2775be20b51a)
+set(TINYGLTF_HASH SHA256=ce40baa0a602d89d6d4a982272934b29d5bb7ac06741c78f10ae283cd24a4c4b)
