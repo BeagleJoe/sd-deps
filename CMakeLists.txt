@@ -95,6 +95,7 @@ if(WIN32)
    set(OPTION_OPENGL_HEADERS true CACHE BOOL "Download the OpenGL headers")
 endif(WIN32)
 
+option(OPTION_SDL3 "Download and Build SDL3" true)
 option(OPTION_SDL2 "Download and Build SDL2" true)
 cmake_dependent_option(OPTION_SDL2_MIXER "Download and Build SDL2_Mixer" true "OPTION_SDL2" false)
 option(OPTION_OPENAL "Download and Build OpenAL" true)
@@ -181,6 +182,21 @@ if(OPTION_ZLIB)
 else(OPTION_ZLIB)
    set(ZLIB_PROJECT )
 endif(OPTION_ZLIB)
+
+if(OPTION_SDL3)
+   set(SDL3_VERSION 3.0.0)
+   set(SDL3_PROJECT SDL3-${SDL3_VERSION})
+   if(MSVC_VERSION GREATER 1700)
+      set(SDL3_ARGS ${EXTERNALS_CMAKE_ARGS} -DSDL_STATIC=Off -DSDL_TEST=Off -DSDL_CMAKE_DEBUG_POSTFIX=)
+      ExternalProject_Add(${SDL3_PROJECT}
+         GIT_REPOSITORY "https://github.com/libsdl-org/SDL.git"
+         GIT_TAG "main"
+         CMAKE_ARGS ${SDL3_ARGS}
+         DEPENDS OpenGL-headers)
+   endif(MSVC_VERSION GREATER 1700)
+else(OPTION_SDL3)
+   set(SDL3_PROJECT )
+endif(OPTION_SDL3)
 
 # TODO - need to disable SDL2 static (it is overwritten by dll's SDL2.lib)
 # message(WARNING "TODO - need to disable SDL2 static (it is overwritten by dll's SDL2.lib)")
