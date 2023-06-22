@@ -96,7 +96,8 @@ if(WIN32)
 endif(WIN32)
 
 option(OPTION_SDL3 "Download and Build SDL3" true)
-option(OPTION_SDL2 "Download and Build SDL2" true)
+cmake_dependent_option(OPTION_SDL3_MIXER "Download and Build SDL3_Mixer" true "OPTION_SDL3" false)
+option(OPTION_SDL2 "Download and Build SDL2" false)
 cmake_dependent_option(OPTION_SDL2_MIXER "Download and Build SDL2_Mixer" true "OPTION_SDL2" false)
 option(OPTION_OPENAL "Download and Build OpenAL" true)
 option(OPTION_PLIB "Download and Build PLIB" true)
@@ -374,6 +375,25 @@ else(OPTION_VORBIS)
    set(VORBIS_PROJECT )
 endif(OPTION_VORBIS)
 
+if(OPTION_SDL3_MIXER)
+   set(SDL3_MIXER_VERSION 3.0.0)
+   set(SDL3_MIXER_PROJECT SDL3_Mixer-${SDL3_MIXER_VERSION})
+   set(SDL3_MIXER_ARGS ${EXTERNALS_CMAKE_ARGS} -DSDL3MIXER_VENDORED:BOOL=ON
+                                               -DSDL3MIXER_SAMPLES:BOOL=OFF
+                                               -DSDL3MIXER_OPUS:BOOL=OFF 
+                                               -DSDL3MIXER_FLAC:BOOL=OFF
+                                               -DSDL3MIXER_MOD:BOOL=OFF
+                                               -DSDL3MIXER_WAVPACK:BOOL=OFF
+                                               -DSDL3MIXER_MIDI_FLUIDSYNTH:BOOL=OFF)
+   ExternalProject_Add(${SDL3_MIXER_PROJECT}
+      GIT_REPOSITORY "https://github.com/libsdl-org/SDL_mixer.git"
+      GIT_TAG "main"
+      CMAKE_ARGS ${SDL3_MIXER_ARGS}
+      DEPENDS ${SDL3_PROJECT} ${VORBIS_PROJECT} ${OGG_PROJECT} )
+else(OPTION_SDL3_MIXER)
+   set(SDL3_MIXER_PROJECT )
+endif(OPTION_SDL3_MIXER)
+
 if(OPTION_SDL2_MIXER)
    set(SDL2_MIXER_ARGS ${EXTERNALS_CMAKE_ARGS} -DSDL2MIXER_DEBUG_POSTFIX:STRING=''
                                                -DSDL2MIXER_VENDORED:BOOL=OFF
@@ -530,7 +550,7 @@ if(OPTION_OSG)
       URL ${OSG_URL}
       URL_HASH ${OSG_HASH}
       CMAKE_ARGS ${OSG_ARGS}
-      DEPENDS ${ZLIB_PROJECT} ${CURL_PROJECT} ${FREETYPE_PROJECT}${FREETYPE_LEGACY_PROJECT} OpenGL-headers ${JPEG_PROJECT} ${PNG_PROJECT} ${SDL2_PROJECT})
+      DEPENDS ${ZLIB_PROJECT} ${CURL_PROJECT} ${FREETYPE_PROJECT}${FREETYPE_LEGACY_PROJECT} OpenGL-headers ${JPEG_PROJECT} ${PNG_PROJECT} ${SDL2_PROJECT} ${SDL3_PROJECT})
 endif(OPTION_OSG)
 
 if(OPTION_GLM)
