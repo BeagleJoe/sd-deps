@@ -5,7 +5,7 @@
 #    created              : June 22 2020
 #    copyright            : (C) 2020 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: thirdpartydefinitions.cmake 9103 2023-07-12 20:37:59Z beaglejoe $
+#    version              : $Id: thirdpartydefinitions.cmake 9109 2023-07-19 13:40:31Z beaglejoe $
 #
 #==============================================================================
 #
@@ -185,13 +185,13 @@ set(FREETYPE_LEGACY_URL https://sourceforge.net/projects/freetype/files/freetype
 set(FREETYPE_LEGACY_HASH SHA256=5c78216d6c5860ef694fde1418d20d69d0ac83ab346c21eb311bd45709e0d93a)
 
 # curl
-set(CURL_VERSION 8.1.2)
+set(CURL_VERSION 8.2.0)
 string(REPLACE "." "_" CURL_TAG ${CURL_VERSION})
 set(CURL_PROJECT curl-${CURL_VERSION})
 set(CURL_FILE ${CURL_PROJECT}.tar.bz2)
 #set(CURL_URL https://curl.se/download/${CURL_FILE})
 set(CURL_URL https://github.com/curl/curl/releases/download/curl-${CURL_TAG}/${CURL_FILE})
-set(CURL_HASH SHA256=b54974d32fd610acace92e3df1f643144015ac65847f0a041fdc17db6f43f243)
+set(CURL_HASH SHA256=080aaa5bef29ab3f592101e7a95f32ddbe88b92125cb28dde479d5a104928ea4)
 
 # osg
 set(OSG_VERSION 3.6.5)
