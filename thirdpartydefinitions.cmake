@@ -5,7 +5,7 @@
 #    created              : June 22 2020
 #    copyright            : (C) 2020 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: thirdpartydefinitions.cmake 9116 2023-07-26 13:33:46Z beaglejoe $
+#    version              : $Id: thirdpartydefinitions.cmake 9148 2023-09-01 21:56:07Z beaglejoe $
 #
 #==============================================================================
 #
@@ -35,11 +35,11 @@
 
 
 # SDL2
-set(SDL2_VERSION 2.28.1)
+set(SDL2_VERSION 2.28.3)
 set(SDL2_PROJECT SDL2-${SDL2_VERSION})
 set(SDL2_FILE ${SDL2_PROJECT}.tar.gz)
 set(SDL2_URL https://www.libsdl.org/release/${SDL2_FILE})
-set(SDL2_HASH SHA256=4977ceba5c0054dbe6c2f114641aced43ce3bf2b41ea64b6a372d6ba129cb15d)
+set(SDL2_HASH SHA256=7acb8679652701a2504d734e2ba7543ec1a83e310498ddd22fd44bf965eb5518)
 
 set(SDL2_LEGACY_VERSION 2.24.2)
 set(SDL2_LEGACY_PROJECT SDL2-${SDL2_LEGACY_VERSION})
@@ -152,13 +152,13 @@ set(EXPAT_LEGACY_HASH SHA256=b2c160f1b60e92da69de8e12333096aeb0c3bf692d41c60794d
 
 # zlib
 message(STATUS "Note special path handling (version in path)")
-set(ZLIB_VERSION 1.2.13)
+set(ZLIB_VERSION 1.3)
 set(ZLIB_PROJECT zlib-${ZLIB_VERSION})
 set(ZLIB_FILE ${ZLIB_PROJECT}.tar.gz)
-#set(ZLIB_URL https://github.com/madler/zlib/archive/v${ZLIB_VERSION}.tar.gz)
+#set(ZLIB_URL https://github.com/madler/zlib/releases/download/v${ZLIB_VERSION}.tar.gz)
 #set(ZLIB_HASH SHA256=d8688496ea40fb61787500e863cc63c9afcbc524468cedeb478068924eb54932)
 set(ZLIB_URL https://zlib.net/${ZLIB_FILE})
-set(ZLIB_HASH SHA256=b3a24de97a8fdbc835b9833169501030b8977031bcb54b3b3ac13740f846ab30)
+set(ZLIB_HASH SHA256=ff0ba4c292013dbc27530b3a81e1f9a813cd39de01ca5e0f8bf355702efa593e)
 
 # libpng
 message(STATUS "Note special path handling (version in path) AND hard-coded 'libpng16'")
@@ -170,12 +170,12 @@ set(PNG_HASH SHA256=8f720b363aa08683c9bf2a563236f45313af2c55d542b5481ae17dd8d183
 
 # freetype
 message(STATUS "Note special path handling (version in path) AND hard-coded 'freetype2'")
-set(FREETYPE_VERSION 2.13.1)
+set(FREETYPE_VERSION 2.13.2)
 set(FREETYPE_PROJECT freetype-${FREETYPE_VERSION})
 string(REPLACE "." "" FREETYPE_TAG ${FREETYPE_VERSION})
 set(FREETYPE_FILE ft${FREETYPE_TAG}.zip)
 set(FREETYPE_URL https://sourceforge.net/projects/freetype/files/freetype2/${FREETYPE_VERSION}/${FREETYPE_FILE}/download)
-set(FREETYPE_HASH SHA256=9f8c3e6b34090a22b8ee89179830cfd49dc655664b22bc36a729a30043df2e9d)
+set(FREETYPE_HASH SHA256=b7e5b03d2e890c4a881e9fab5870463a37fc9cb934c886b9aab2f6fd637ae783)
 
 message(STATUS "Note special path handling (version in path) AND hard-coded 'freetype2'")
 set(FREETYPE_LEGACY_VERSION 2.10.4)
@@ -216,8 +216,8 @@ set(GLM_URL https://github.com/g-truc/glm/releases/download/${GLM_VERSION}/${GLM
 set(GLM_HASH SHA256=37e2a3d62ea3322e43593c34bae29f57e3e251ea89f4067506c94043769ade4c)
 
 # TinyGLTF 
-set(TINYGLTF_VERSION 2.8.14)
+set(TINYGLTF_VERSION 2.8.15)
 set(TINYGLTF_PROJECT TinyGLTF-${TINYGLTF_VERSION})
 set(TINYGLTF_FILE ${TINYGLTF_PROJECT}.tar.gz)
 set(TINYGLTF_URL https://github.com/syoyo/tinygltf/archive/refs/tags/v${TINYGLTF_VERSION}.tar.gz)
-set(TINYGLTF_HASH SHA256=63cd43746c9ddfe5777494500422e831a312299e386fbf80922839dc1a5575f8)
+set(TINYGLTF_HASH SHA256=d5f1b693bc0e543481a9d8d40f804cdd1db769ae04954ad5a780ae012b95ca69)
