@@ -231,11 +231,13 @@ set(GLM_URL https://github.com/g-truc/glm/releases/download/${GLM_VERSION}/${GLM
 set(GLM_HASH SHA256=37e2a3d62ea3322e43593c34bae29f57e3e251ea89f4067506c94043769ade4c)
 
 # libzip
-set(LIBZIP_VERSION 1.10.0)
+set(LIBZIP_VERSION 1.10.1)
 set(LIBZIP_PROJECT libzip-${LIBZIP_VERSION})
 set(LIBZIP_FILE ${LIBZIP_PROJECT}.tar.gz)
-set(LIBZIP_URL https://libzip.org/download/${LIBZIP_FILE})
-set(LIBZIP_HASH SHA256=52a60b46182587e083b71e2b82fcaaba64dd5eb01c5b1f1bc71069a3858e40fe)
+# SSL issue ?
+#set(LIBZIP_URL https://libzip.org/download/${LIBZIP_FILE})
+set(LIBZIP_URL https://github.com/nih-at/libzip/releases/download/v${LIBZIP_VERSION}/${LIBZIP_FILE})
+set(LIBZIP_HASH SHA256=9669ae5dfe3ac5b3897536dc8466a874c8cf2c0e3b1fdd08d75b273884299363)
 
 # OpenCL
 set(OPENCL_VERSION v2023.04.17)
