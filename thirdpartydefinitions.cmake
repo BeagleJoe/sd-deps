@@ -5,7 +5,7 @@
 #    created              : June 22 2020
 #    copyright            : (C) 2020 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: thirdpartydefinitions.cmake 9148 2023-09-01 21:56:07Z beaglejoe $
+#    version              : $Id: thirdpartydefinitions.cmake 9152 2023-09-08 18:56:11Z beaglejoe $
 #
 #==============================================================================
 #
@@ -226,8 +226,8 @@ set(LIBZIP_HASH SHA256=9669ae5dfe3ac5b3897536dc8466a874c8cf2c0e3b1fdd08d75b27388
 
 
 # TinyGLTF 
-set(TINYGLTF_VERSION 2.8.15)
+set(TINYGLTF_VERSION 2.8.16)
 set(TINYGLTF_PROJECT TinyGLTF-${TINYGLTF_VERSION})
 set(TINYGLTF_FILE ${TINYGLTF_PROJECT}.tar.gz)
 set(TINYGLTF_URL https://github.com/syoyo/tinygltf/archive/refs/tags/v${TINYGLTF_VERSION}.tar.gz)
-set(TINYGLTF_HASH SHA256=d5f1b693bc0e543481a9d8d40f804cdd1db769ae04954ad5a780ae012b95ca69)
+set(TINYGLTF_HASH SHA256=d57d9b982a1e861601e90c4314d396ed8558d36ae12bfaaa414754dc0a34086d)
