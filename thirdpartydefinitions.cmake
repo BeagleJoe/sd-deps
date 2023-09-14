@@ -222,7 +222,6 @@ set(MAGNUM_PROJECT magnum-${MAGNUM_VERSION})
 set(MAGNUM_FILE magnum-${MAGNUM_VERSION}.tar.gz)
 set(MAGNUM_URL https://github.com/mosra/magnum/archive/refs/tags/v${MAGNUM_VERSION}.tar.gz)
 set(MAGNUM_HASH SHA256=98dfe802e56614e4e6bf750d9b693de46a5ed0c6eb479b0268f1a20bf34268bf)
-=======
 
 # GLM
 set(GLM_VERSION 0.9.9.8)
