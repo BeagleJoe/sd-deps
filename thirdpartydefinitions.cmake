@@ -5,7 +5,7 @@
 #    created              : June 22 2020
 #    copyright            : (C) 2020 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: thirdpartydefinitions.cmake 9152 2023-09-08 18:56:11Z beaglejoe $
+#    version              : $Id: thirdpartydefinitions.cmake 9156 2023-09-14 14:30:08Z beaglejoe $
 #
 #==============================================================================
 #
@@ -185,13 +185,13 @@ set(FREETYPE_LEGACY_URL https://sourceforge.net/projects/freetype/files/freetype
 set(FREETYPE_LEGACY_HASH SHA256=5c78216d6c5860ef694fde1418d20d69d0ac83ab346c21eb311bd45709e0d93a)
 
 # curl
-set(CURL_VERSION 8.2.1)
+set(CURL_VERSION 8.3.0)
 string(REPLACE "." "_" CURL_TAG ${CURL_VERSION})
 set(CURL_PROJECT curl-${CURL_VERSION})
 set(CURL_FILE ${CURL_PROJECT}.tar.bz2)
 #set(CURL_URL https://curl.se/download/${CURL_FILE})
 set(CURL_URL https://github.com/curl/curl/releases/download/curl-${CURL_TAG}/${CURL_FILE})
-set(CURL_HASH SHA256=0f1e31ebe336c09ec66381f1532f8350e466e1d02ffe10c4ac44a867f1b9d343)
+set(CURL_HASH SHA256=051a217095671e925a129ba9e2ff2e223b44b08399003ba50738060955d010ff)
 
 # osg
 set(OSG_VERSION 3.6.5)
@@ -222,6 +222,7 @@ set(MAGNUM_PROJECT magnum-${MAGNUM_VERSION})
 set(MAGNUM_FILE magnum-${MAGNUM_VERSION}.tar.gz)
 set(MAGNUM_URL https://github.com/mosra/magnum/archive/refs/tags/v${MAGNUM_VERSION}.tar.gz)
 set(MAGNUM_HASH SHA256=98dfe802e56614e4e6bf750d9b693de46a5ed0c6eb479b0268f1a20bf34268bf)
+=======
 
 # GLM
 set(GLM_VERSION 0.9.9.8)
@@ -256,8 +257,8 @@ set(VSG_HASH SHA256=9a62be7facc13c391c33dc8356b147a3b86f531ea72a28f6b2c364777e76
 #https://github.com/vsg-dev/VulkanSceneGraph/archive/refs/tags/VulkanSceneGraph-1.0.2.tar.gz
 
 # TinyGLTF 
-set(TINYGLTF_VERSION 2.8.16)
+set(TINYGLTF_VERSION 2.8.17)
 set(TINYGLTF_PROJECT TinyGLTF-${TINYGLTF_VERSION})
 set(TINYGLTF_FILE ${TINYGLTF_PROJECT}.tar.gz)
 set(TINYGLTF_URL https://github.com/syoyo/tinygltf/archive/refs/tags/v${TINYGLTF_VERSION}.tar.gz)
-set(TINYGLTF_HASH SHA256=d57d9b982a1e861601e90c4314d396ed8558d36ae12bfaaa414754dc0a34086d)
+set(TINYGLTF_HASH SHA256=abce98eadec3affe88d9b085e86221416325fc5f940faab37394ae52ca80626c)
