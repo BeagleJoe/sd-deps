@@ -5,7 +5,7 @@
 #    created              : June 22 2020
 #    copyright            : (C) 2020 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: thirdpartydefinitions.cmake 9159 2023-10-03 14:40:16Z beaglejoe $
+#    version              : $Id: thirdpartydefinitions.cmake 9164 2023-10-11 19:43:24Z beaglejoe $
 #
 #==============================================================================
 #
@@ -185,13 +185,13 @@ set(FREETYPE_LEGACY_URL https://sourceforge.net/projects/freetype/files/freetype
 set(FREETYPE_LEGACY_HASH SHA256=5c78216d6c5860ef694fde1418d20d69d0ac83ab346c21eb311bd45709e0d93a)
 
 # curl
-set(CURL_VERSION 8.3.0)
+set(CURL_VERSION 8.4.0)
 string(REPLACE "." "_" CURL_TAG ${CURL_VERSION})
 set(CURL_PROJECT curl-${CURL_VERSION})
 set(CURL_FILE ${CURL_PROJECT}.tar.bz2)
 #set(CURL_URL https://curl.se/download/${CURL_FILE})
 set(CURL_URL https://github.com/curl/curl/releases/download/curl-${CURL_TAG}/${CURL_FILE})
-set(CURL_HASH SHA256=051a217095671e925a129ba9e2ff2e223b44b08399003ba50738060955d010ff)
+set(CURL_HASH SHA256=e5250581a9c032b1b6ed3cf2f9c114c811fc41881069e9892d115cc73f9e88c6)
 
 # osg
 set(OSG_VERSION 3.6.5)
@@ -202,11 +202,11 @@ set(OSG_HASH SHA256=0e9e3e4cc6f463f21a901934a95e9264b231a1d5db90f72dcb4b8cc94b0d
 
 # sqlite3
 message(STATUS "Note the YEAR in the path AND hard-coded filename")
-set(SQLITE3_VERSION 3.43.1)
+set(SQLITE3_VERSION 3.43.2)
 set(SQLITE3_PROJECT sqlite3-${SQLITE3_VERSION})
-set(SQLITE3_FILE sqlite-amalgamation-3430100.zip)
+set(SQLITE3_FILE sqlite-amalgamation-3430200.zip)
 set(SQLITE3_URL https://www.sqlite.org/2023/${SQLITE3_FILE})
-set(SQLITE3_HASH SHA256=7e634bbd4b2870a83dc7c1e3cc02e4d30b8555cd7db7b332f24e0c447fd0dd16)
+set(SQLITE3_HASH SHA256=a17ac8792f57266847d57651c5259001d1e4e4b46be96ec0d985c953925b2a1c)
 
 # GLM
 set(GLM_VERSION 0.9.9.8)
@@ -216,8 +216,8 @@ set(GLM_URL https://github.com/g-truc/glm/releases/download/${GLM_VERSION}/${GLM
 set(GLM_HASH SHA256=37e2a3d62ea3322e43593c34bae29f57e3e251ea89f4067506c94043769ade4c)
 
 # TinyGLTF 
-set(TINYGLTF_VERSION 2.8.17)
+set(TINYGLTF_VERSION 2.8.18)
 set(TINYGLTF_PROJECT TinyGLTF-${TINYGLTF_VERSION})
 set(TINYGLTF_FILE ${TINYGLTF_PROJECT}.tar.gz)
 set(TINYGLTF_URL https://github.com/syoyo/tinygltf/archive/refs/tags/v${TINYGLTF_VERSION}.tar.gz)
-set(TINYGLTF_HASH SHA256=abce98eadec3affe88d9b085e86221416325fc5f940faab37394ae52ca80626c)
+set(TINYGLTF_HASH SHA256=29dce3c1f49d1ee6160fd6802355f88cddb0fb7a68aaaa5e7f3236cdc230da0e)
