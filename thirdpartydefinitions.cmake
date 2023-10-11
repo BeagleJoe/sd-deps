@@ -202,11 +202,11 @@ set(OSG_HASH SHA256=0e9e3e4cc6f463f21a901934a95e9264b231a1d5db90f72dcb4b8cc94b0d
 
 # sqlite3
 message(STATUS "Note the YEAR in the path AND hard-coded filename")
-set(SQLITE3_VERSION 3.43.0)
+set(SQLITE3_VERSION 3.43.2)
 set(SQLITE3_PROJECT sqlite3-${SQLITE3_VERSION})
-set(SQLITE3_FILE sqlite-amalgamation-3430000.zip)
+set(SQLITE3_FILE sqlite-amalgamation-3430200.zip)
 set(SQLITE3_URL https://www.sqlite.org/2023/${SQLITE3_FILE})
-set(SQLITE3_HASH SHA256=bb5849ae4d7129c09d20596379a0b3f7b1ac59cf9998eba5ef283ea9b6c000a5)
+set(SQLITE3_HASH SHA256=a17ac8792f57266847d57651c5259001d1e4e4b46be96ec0d985c953925b2a1c)
 
 #https://github.com/mosra/corrade/archive/refs/tags/v2020.06.tar.gz
 # corrade
