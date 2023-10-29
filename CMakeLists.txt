@@ -5,7 +5,7 @@
 #    created              : Aug 5 2015
 #    copyright            : (C) 2015-2023 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: CMakeLists.txt 8868 2023-04-06 03:00:03Z beaglejoe $
+#    version              : $Id: CMakeLists.txt 9183 2023-10-29 15:52:14Z beaglejoe $
 #
 #==============================================================================
 #
@@ -25,7 +25,7 @@
 #==============================================================================
 #
 # (hashtag) starts a comment
-cmake_minimum_required(VERSION 3.4.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.5.0 FATAL_ERROR)
 
 IF(POLICY CMP0135)
    CMAKE_POLICY(SET CMP0135 NEW)
