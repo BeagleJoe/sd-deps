@@ -5,7 +5,7 @@
 #    created              : June 22 2020
 #    copyright            : (C) 2020 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: thirdpartydefinitions.cmake 9164 2023-10-11 19:43:24Z beaglejoe $
+#    version              : $Id: thirdpartydefinitions.cmake 9196 2023-11-01 20:29:55Z beaglejoe $
 #
 #==============================================================================
 #
@@ -202,11 +202,11 @@ set(OSG_HASH SHA256=0e9e3e4cc6f463f21a901934a95e9264b231a1d5db90f72dcb4b8cc94b0d
 
 # sqlite3
 message(STATUS "Note the YEAR in the path AND hard-coded filename")
-set(SQLITE3_VERSION 3.43.2)
+set(SQLITE3_VERSION 3.44.0)
 set(SQLITE3_PROJECT sqlite3-${SQLITE3_VERSION})
-set(SQLITE3_FILE sqlite-amalgamation-3430200.zip)
+set(SQLITE3_FILE sqlite-amalgamation-3440000.zip)
 set(SQLITE3_URL https://www.sqlite.org/2023/${SQLITE3_FILE})
-set(SQLITE3_HASH SHA256=a17ac8792f57266847d57651c5259001d1e4e4b46be96ec0d985c953925b2a1c)
+set(SQLITE3_HASH SHA256=93299c8d2c8397622fe00bd807204b1f58815f45bda8097bf93b3bf759a3ebad)
 
 # GLM
 set(GLM_VERSION 0.9.9.8)
