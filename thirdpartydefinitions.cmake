@@ -5,7 +5,7 @@
 #    created              : June 22 2020
 #    copyright            : (C) 2020 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: thirdpartydefinitions.cmake 9233 2023-12-26 21:18:07Z beaglejoe $
+#    version              : $Id: thirdpartydefinitions.cmake 9273 2024-01-22 19:45:30Z beaglejoe $
 #
 #==============================================================================
 #
@@ -48,14 +48,14 @@ set(SDL2_LEGACY_URL https://www.libsdl.org/release/${SDL2_LEGACY_FILE})
 set(SDL2_LEGACY_HASH SHA256=b35ef0a802b09d90ed3add0dcac0e95820804202914f5bb7b0feb710f1a1329f)
 
 # SDL2_MIXER
-set(SDL2_MIXER_VERSION 2.6.3)
+set(SDL2_MIXER_VERSION 2.8.0)
 set(SDL2_MIXER_PROJECT SDL2_mixer-${SDL2_MIXER_VERSION})
 set(SDL2_MIXER_FILE ${SDL2_MIXER_PROJECT}.tar.gz)
 #set(SDL2_MIXER_URL https://www.libsdl.org/projects/SDL_mixer/release/${SDL2_MIXER_FILE})
 
 set(SDL2_MIXER_URL https://github.com/libsdl-org/SDL_mixer/releases/download/release-${SDL2_MIXER_VERSION}/${SDL2_MIXER_FILE})
 #https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.6.1/SDL2_mixer-2.6.1.tar.gz
-set(SDL2_MIXER_HASH SHA256=7a6ba86a478648ce617e3a5e9277181bc67f7ce9876605eea6affd4a0d6eea8f)
+set(SDL2_MIXER_HASH SHA256=1cfb34c87b26dbdbc7afd68c4f545c0116ab5f90bbfecc5aebe2a9cb4bb31549)
 
 # OpenAL-soft
 set(OPENAL_PROJECT_VERSION 1.23.1)
@@ -202,11 +202,11 @@ set(OSG_HASH SHA256=0e9e3e4cc6f463f21a901934a95e9264b231a1d5db90f72dcb4b8cc94b0d
 
 # sqlite3
 message(STATUS "Note the YEAR in the path AND hard-coded filename")
-set(SQLITE3_VERSION 3.44.0)
+set(SQLITE3_VERSION 3.45.0)
 set(SQLITE3_PROJECT sqlite3-${SQLITE3_VERSION})
-set(SQLITE3_FILE sqlite-amalgamation-3440000.zip)
-set(SQLITE3_URL https://www.sqlite.org/2023/${SQLITE3_FILE})
-set(SQLITE3_HASH SHA256=93299c8d2c8397622fe00bd807204b1f58815f45bda8097bf93b3bf759a3ebad)
+set(SQLITE3_FILE sqlite-amalgamation-3450000.zip)
+set(SQLITE3_URL https://www.sqlite.org/2024/${SQLITE3_FILE})
+set(SQLITE3_HASH SHA256=bde30d13ebdf84926ddd5e8b6df145be03a577a48fd075a087a5dd815bcdf740)
 
 # GLM
 set(GLM_VERSION 0.9.9.8)
