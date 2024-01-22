@@ -5,7 +5,7 @@
 #    created              : Aug 5 2015
 #    copyright            : (C) 2015-2023 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: CMakeLists.txt 9183 2023-10-29 15:52:14Z beaglejoe $
+#    version              : $Id: CMakeLists.txt 9272 2024-01-22 19:35:34Z beaglejoe $
 #
 #==============================================================================
 #
@@ -375,6 +375,7 @@ if(OPTION_SDL2_MIXER)
                                                -DSDL2MIXER_OPUS:BOOL=OFF 
                                                -DSDL2MIXER_FLAC:BOOL=OFF
                                                -DSDL2MIXER_MOD:BOOL=OFF
+                                               -DSDL2MIXER_WAVPACK:BOOL=OFF
                                                -DSDL2MIXER_MIDI_FLUIDSYNTH:BOOL=OFF)
    ExternalProject_Add(${SDL2_MIXER_PROJECT}
       URL ${SDL2_MIXER_URL}
