@@ -5,7 +5,7 @@
 #    created              : June 22 2020
 #    copyright            : (C) 2020 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
-#    version              : $Id: thirdpartydefinitions.cmake 9339 2024-02-24 20:40:27Z beaglejoe $
+#    version              : $Id: thirdpartydefinitions.cmake 9358 2024-03-01 20:30:52Z beaglejoe $
 #
 #==============================================================================
 #
@@ -255,6 +255,7 @@ set(VSG_URL https://github.com/vsg-dev/VulkanSceneGraph/archive/refs/tags/v${VSG
 set(VSG_HASH SHA256=ec5e1db9ec4082598b6d56fb5812fdf552e5a6b49792cb80f29bcb8a23fe7cac)
 
 #https://github.com/vsg-dev/VulkanSceneGraph/archive/refs/tags/VulkanSceneGraph-1.0.2.tar.gz
+=======
 
 # TinyGLTF 
 set(TINYGLTF_VERSION 2.8.21)
