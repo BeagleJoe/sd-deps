@@ -28,7 +28,7 @@ cmake_minimum_required(VERSION 2.8)
 
 project(jpeg C)
 
-set(VERSION "9e")
+set(VERSION "9f")
 
 
 include_directories(include)
