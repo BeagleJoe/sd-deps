@@ -232,13 +232,13 @@ set(MAGNUM_HASH SHA256=98dfe802e56614e4e6bf750d9b693de46a5ed0c6eb479b0268f1a20bf
 
 
 # libzip
-set(LIBZIP_VERSION 1.11.1)
+set(LIBZIP_VERSION 1.11.2)
 set(LIBZIP_PROJECT libzip-${LIBZIP_VERSION})
 set(LIBZIP_FILE ${LIBZIP_PROJECT}.tar.gz)
 # SSL issue ?
 #set(LIBZIP_URL https://libzip.org/download/${LIBZIP_FILE}) 
 set(LIBZIP_URL https://github.com/nih-at/libzip/releases/download/v${LIBZIP_VERSION}/${LIBZIP_FILE})
-set(LIBZIP_HASH SHA256=c0e6fa52a62ba11efd30262290dc6970947aef32e0cc294ee50e9005ceac092a)
+set(LIBZIP_HASH SHA256=6b2a43837005e1c23fdfee532b78f806863e412d2089b9c42b49ab08cbcd7665)
 
 # OpenCL
 set(OPENCL_VERSION v2024.05.08)
