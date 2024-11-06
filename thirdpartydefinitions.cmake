@@ -186,13 +186,13 @@ set(FREETYPE_LEGACY_URL https://sourceforge.net/projects/freetype/files/freetype
 set(FREETYPE_LEGACY_HASH SHA256=5c78216d6c5860ef694fde1418d20d69d0ac83ab346c21eb311bd45709e0d93a)
 
 # curl
-set(CURL_VERSION 8.10.1)
+set(CURL_VERSION 8.11.0)
 string(REPLACE "." "_" CURL_TAG ${CURL_VERSION})
 set(CURL_PROJECT curl-${CURL_VERSION})
 set(CURL_FILE ${CURL_PROJECT}.tar.bz2)
 #set(CURL_URL https://curl.se/download/${CURL_FILE})
 set(CURL_URL https://github.com/curl/curl/releases/download/curl-${CURL_TAG}/${CURL_FILE})
-set(CURL_HASH SHA256=3763cd97aae41dcf41950d23e87ae23b2edb2ce3a5b0cf678af058c391b6ae31)
+set(CURL_HASH SHA256=c95d5a1368803729345a632ce42cceeefd5f09c3b4d9582f858f6779f4b8b254)
 
 # osg
 set(OSG_VERSION 3.6.5)
