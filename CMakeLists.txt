@@ -3,7 +3,7 @@
 #
 #    file                 : CMakeLists.txt
 #    created              : Aug 5 2015
-#    copyright            : (C) 2015-2023 Joe Thompson
+#    copyright            : (C) 2015-2024 Joe Thompson
 #    email                : beaglejoe@users.sourceforge.net
 #    version              : $Id: CMakeLists.txt 9272 2024-01-22 19:35:34Z beaglejoe $
 #
@@ -127,6 +127,7 @@ if(OPTION_CACHED_ARCHIVES)
    set(SDL2_URL "${CACHED_URL}/${SDL2_FILE}")
    set(SDL2_MIXER_URL "${CACHED_URL}/${SDL2_MIXER_FILE}")
    set(OPENAL_URL "${CACHED_URL}/${OPENAL_FILE}")
+   set(OPENAL_C17_URL "${CACHED_URL}/${OPENAL_C17_FILE}")
    set(OPENAL_C11_URL "${CACHED_URL}/${OPENAL_C11_FILE}")
    set(OPENAL_LEGACY_URL "${CACHED_URL}/${OPENAL_LEGACY_FILE}")
    set(PLIB_HEAD_URL "${CACHED_URL}/${PLIB_HEAD_FILE}")
@@ -236,6 +237,13 @@ if(OPTION_OPENAL)
       ExternalProject_Add(${OPENAL_C11_PROJECT}
          URL ${OPENAL_C11_URL}
          URL_HASH ${OPENAL_C11_HASH}
+         CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS}
+         DEPENDS ${SDL2_PROJECT})
+   elseif(MSVC_VERSION LESS 1920)
+      #message(WARNING "openal-soft versions newer than 1.23.1 need Visual Studio 2019 and CMAKE_SYSTEM_VERSION >= 10")
+      ExternalProject_Add(${OPENAL_C17_PROJECT}
+         URL ${OPENAL_C17_URL}
+         URL_HASH ${OPENAL_C17_HASH}
          CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS}
          DEPENDS ${SDL2_PROJECT})
    else()
