@@ -35,11 +35,11 @@
 
 
 # SDL2
-set(SDL2_VERSION 2.30.9)
+set(SDL2_VERSION 2.30.10)
 set(SDL2_PROJECT SDL2-${SDL2_VERSION})
 set(SDL2_FILE ${SDL2_PROJECT}.tar.gz)
 set(SDL2_URL https://www.libsdl.org/release/${SDL2_FILE})
-set(SDL2_HASH SHA256=24b574f71c87a763f50704bbb630cbe38298d544a1f890f099a4696b1d6beba4)
+set(SDL2_HASH SHA256=f59adf36a0fcf4c94198e7d3d776c1b3824211ab7aeebeb31fe19836661196aa)
 
 set(SDL2_LEGACY_VERSION 2.24.2)
 set(SDL2_LEGACY_PROJECT SDL2-${SDL2_LEGACY_VERSION})
@@ -58,11 +58,17 @@ set(SDL2_MIXER_URL https://github.com/libsdl-org/SDL_mixer/releases/download/rel
 set(SDL2_MIXER_HASH SHA256=1cfb34c87b26dbdbc7afd68c4f545c0116ab5f90bbfecc5aebe2a9cb4bb31549)
 
 # OpenAL-soft
-set(OPENAL_PROJECT_VERSION 1.24.0)
+set(OPENAL_PROJECT_VERSION 1.24.1)
 set(OPENAL_PROJECT openal-soft-${OPENAL_PROJECT_VERSION})
 set(OPENAL_FILE ${OPENAL_PROJECT}.tar.gz)
 set(OPENAL_URL https://github.com/kcat/openal-soft/archive/refs/tags/${OPENAL_PROJECT_VERSION}.tar.gz)
-set(OPENAL_HASH SHA256=d3753f7aba798574ce2dc934e3c47dc655cd7a4652c038f2a860b0e81ff6d3dc)
+set(OPENAL_HASH SHA256=e1b6ec960e00bfed3d480330274b0f102dc10e4ae0dbb70fd9db80d6978165b1)
+
+set(OPENAL_C17_PROJECT_VERSION 1.23.1)
+set(OPENAL_C17_PROJECT openal-soft-${OPENAL_C17_PROJECT_VERSION})
+set(OPENAL_C17_FILE ${OPENAL_C17_PROJECT}.tar.gz)
+set(OPENAL_C17_URL https://github.com/kcat/openal-soft/archive/refs/tags/${OPENAL_C17_PROJECT_VERSION}.tar.gz)
+set(OPENAL_C17_HASH SHA256=dfddf3a1f61059853c625b7bb03de8433b455f2f79f89548cbcbd5edca3d4a4a)
 
 # https://github.com/kcat/openal-soft/releases/tag/1.23.1
 # https://github.com/kcat/openal-soft/archive/refs/tags/1.23.1.tar.gz
@@ -186,13 +192,13 @@ set(FREETYPE_LEGACY_URL https://sourceforge.net/projects/freetype/files/freetype
 set(FREETYPE_LEGACY_HASH SHA256=5c78216d6c5860ef694fde1418d20d69d0ac83ab346c21eb311bd45709e0d93a)
 
 # curl
-set(CURL_VERSION 8.11.0)
+set(CURL_VERSION 8.11.1)
 string(REPLACE "." "_" CURL_TAG ${CURL_VERSION})
 set(CURL_PROJECT curl-${CURL_VERSION})
 set(CURL_FILE ${CURL_PROJECT}.tar.bz2)
 #set(CURL_URL https://curl.se/download/${CURL_FILE})
 set(CURL_URL https://github.com/curl/curl/releases/download/curl-${CURL_TAG}/${CURL_FILE})
-set(CURL_HASH SHA256=c95d5a1368803729345a632ce42cceeefd5f09c3b4d9582f858f6779f4b8b254)
+set(CURL_HASH SHA256=e9773ad1dfa21aedbfe8e1ef24c9478fa780b1b3d4f763c98dd04629b5e43485)
 
 # osg
 set(OSG_VERSION 3.6.5)
@@ -203,11 +209,11 @@ set(OSG_HASH SHA256=0e9e3e4cc6f463f21a901934a95e9264b231a1d5db90f72dcb4b8cc94b0d
 
 # sqlite3
 message(STATUS "Note the YEAR in the path AND hard-coded filename")
-set(SQLITE3_VERSION 3.47.0)
+set(SQLITE3_VERSION 3.47.2)
 set(SQLITE3_PROJECT sqlite3-${SQLITE3_VERSION})
-set(SQLITE3_FILE sqlite-amalgamation-3470000.zip)
+set(SQLITE3_FILE sqlite-amalgamation-3470200.zip)
 set(SQLITE3_URL https://www.sqlite.org/2024/${SQLITE3_FILE})
-set(SQLITE3_HASH SHA256=2842fddbb1cc33f66c7da998a57535f14a6bfee159676a07bb4bf3e59375d93e)
+set(SQLITE3_HASH SHA256=aa73d8748095808471deaa8e6f34aa700e37f2f787f4425744f53fdd15a89c40)
 # GLM
 set(GLM_VERSION 1.0.1)
 set(GLM_PROJECT glm-${GLM_VERSION})
