@@ -224,13 +224,13 @@ set(GLM_URL https://github.com/g-truc/glm/archive/refs/tags/${GLM_VERSION}.tar.g
 set(GLM_HASH SHA256=9f3174561fd26904b23f0db5e560971cbf9b3cbda0b280f04d5c379d03bf234c)
 
 # libzip
-set(LIBZIP_VERSION 1.11.2)
+set(LIBZIP_VERSION 1.11.3)
 set(LIBZIP_PROJECT libzip-${LIBZIP_VERSION})
 set(LIBZIP_FILE ${LIBZIP_PROJECT}.tar.gz)
 # SSL issue ?
 #set(LIBZIP_URL https://libzip.org/download/${LIBZIP_FILE}) 
 set(LIBZIP_URL https://github.com/nih-at/libzip/releases/download/v${LIBZIP_VERSION}/${LIBZIP_FILE})
-set(LIBZIP_HASH SHA256=6b2a43837005e1c23fdfee532b78f806863e412d2089b9c42b49ab08cbcd7665)
+set(LIBZIP_HASH SHA256=76653f135dde3036036c500e11861648ffbf9e1fc5b233ff473c60897d9db0ea)
 
 
 # TinyGLTF 
