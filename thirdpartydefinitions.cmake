@@ -168,12 +168,12 @@ set(ZLIB_HASH SHA256=9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b7
 
 # libpng
 message(STATUS "Note special path handling (version in path) AND hard-coded 'libpng16'")
-set(PNG_VERSION 1.6.45)
+set(PNG_VERSION 1.6.46)
 set(PNG_PROJECT libpng-${PNG_VERSION})
 set(PNG_FILE ${PNG_PROJECT}.tar.gz)
 #set(PNG_URL https://sourceforge.net/projects/libpng/files/libpng16/${PNG_VERSION}/${PNG_FILE}/download)
 set(PNG_URL https://github.com/pnggroup/libpng/archive/refs/tags/v${PNG_VERSION}.tar.gz)
-set(PNG_HASH SHA256=7ff6898520645716ddc3d8381d97b6e02937b03da92e6fd0d7cf9d7d2b0da780)
+set(PNG_HASH SHA256=767b01936f9620d4ab4cdf6ec348f6526f861f825648b610b1d604167dc738d2)
 
 # freetype
 message(STATUS "Note special path handling (version in path) AND hard-coded 'freetype2'")
@@ -264,8 +264,8 @@ set(VSG_HASH SHA256=6219e0918cbfccab088b0aba9c582c46d41dbfc01cf8be7714655880ee28
 
 
 # TinyGLTF 
-set(TINYGLTF_VERSION 2.9.4)
+set(TINYGLTF_VERSION 2.9.5)
 set(TINYGLTF_PROJECT TinyGLTF-${TINYGLTF_VERSION})
 set(TINYGLTF_FILE ${TINYGLTF_PROJECT}.tar.gz)
 set(TINYGLTF_URL https://github.com/syoyo/tinygltf/archive/refs/tags/v${TINYGLTF_VERSION}.tar.gz)
-set(TINYGLTF_HASH SHA256=16cd37cdfecd5d8204cdbc37d0affbcadf970dbd33da8d8a0feba5028124f946)
+set(TINYGLTF_HASH SHA256=7b93da27c524dd17179a0eeba6f432b0060d82f6222630ba027c219ce11e24db)
