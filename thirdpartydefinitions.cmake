@@ -256,11 +256,11 @@ set(OPENCL_URL https://github.com/KhronosGroup/OpenCL-SDK/releases/download/${OP
 set(OPENCL_HASH SHA256=c2e3c8f4c1253395ca0b2e26f464da55ec0359854f45646afa606fe4d5ca0d3c)
 
 # VulkanSceneGraph
-set(VSG_VERSION 1.1.9)
+set(VSG_VERSION 1.1.10)
 set(VSG_PROJECT VulkanSceneGraph-${VSG_VERSION})
 set(VSG_FILE ${VSG_PROJECT}.tar.gz)
 set(VSG_URL https://github.com/vsg-dev/VulkanSceneGraph/archive/refs/tags/v${VSG_VERSION}.tar.gz)
-set(VSG_HASH SHA256=6219e0918cbfccab088b0aba9c582c46d41dbfc01cf8be7714655880ee289206)
+set(VSG_HASH SHA256=b430132ba5454e0616ff5334a7cb9196c0e8f10a925c2106e80a78d6f24ae4b5)
 
 
 # TinyGLTF 
