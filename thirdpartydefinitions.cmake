@@ -48,14 +48,14 @@ set(SDL2_LEGACY_URL https://www.libsdl.org/release/${SDL2_LEGACY_FILE})
 set(SDL2_LEGACY_HASH SHA256=b35ef0a802b09d90ed3add0dcac0e95820804202914f5bb7b0feb710f1a1329f)
 
 # SDL2_MIXER
-set(SDL2_MIXER_VERSION 2.8.0)
+set(SDL2_MIXER_VERSION 2.8.1)
 set(SDL2_MIXER_PROJECT SDL2_mixer-${SDL2_MIXER_VERSION})
 set(SDL2_MIXER_FILE ${SDL2_MIXER_PROJECT}.tar.gz)
 #set(SDL2_MIXER_URL https://www.libsdl.org/projects/SDL_mixer/release/${SDL2_MIXER_FILE})
 
 set(SDL2_MIXER_URL https://github.com/libsdl-org/SDL_mixer/releases/download/release-${SDL2_MIXER_VERSION}/${SDL2_MIXER_FILE})
 #https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.6.1/SDL2_mixer-2.6.1.tar.gz
-set(SDL2_MIXER_HASH SHA256=1cfb34c87b26dbdbc7afd68c4f545c0116ab5f90bbfecc5aebe2a9cb4bb31549)
+set(SDL2_MIXER_HASH SHA256=cb760211b056bfe44f4a1e180cc7cb201137e4d1572f2002cc1be728efd22660)
 
 # OpenAL-soft
 set(OPENAL_PROJECT_VERSION 1.24.2)
@@ -192,13 +192,13 @@ set(FREETYPE_LEGACY_URL https://sourceforge.net/projects/freetype/files/freetype
 set(FREETYPE_LEGACY_HASH SHA256=5c78216d6c5860ef694fde1418d20d69d0ac83ab346c21eb311bd45709e0d93a)
 
 # curl
-set(CURL_VERSION 8.11.1)
+set(CURL_VERSION 8.12.0)
 string(REPLACE "." "_" CURL_TAG ${CURL_VERSION})
 set(CURL_PROJECT curl-${CURL_VERSION})
 set(CURL_FILE ${CURL_PROJECT}.tar.bz2)
 #set(CURL_URL https://curl.se/download/${CURL_FILE})
 set(CURL_URL https://github.com/curl/curl/releases/download/curl-${CURL_TAG}/${CURL_FILE})
-set(CURL_HASH SHA256=e9773ad1dfa21aedbfe8e1ef24c9478fa780b1b3d4f763c98dd04629b5e43485)
+set(CURL_HASH SHA256=5a85adbe401ed3b998ee1128524e9b045feb39577f3c336f6997e7a4afaafcd7)
 
 # osg
 set(OSG_VERSION 3.6.5)
@@ -210,11 +210,11 @@ set(OSG_HASH SHA256=0e9e3e4cc6f463f21a901934a95e9264b231a1d5db90f72dcb4b8cc94b0d
 # sqlite3
 message(STATUS "Note the YEAR in the path AND hard-coded filename")
 message(STATUS "Change the version in: patches/sqlite3-CMakeLists.txt")
-set(SQLITE3_VERSION 3.48.0)
+set(SQLITE3_VERSION 3.49.0)
 set(SQLITE3_PROJECT sqlite3-${SQLITE3_VERSION})
-set(SQLITE3_FILE sqlite-amalgamation-3480000.zip)
+set(SQLITE3_FILE sqlite-amalgamation-3490000.zip)
 set(SQLITE3_URL https://www.sqlite.org/2025/${SQLITE3_FILE})
-set(SQLITE3_HASH SHA256=d9a15a42db7c78f88fe3d3c5945acce2f4bfe9e4da9f685cd19f6ea1d40aa884)
+set(SQLITE3_HASH SHA256=cb6851ebad74913672014c20f642bbd7883552c4747780583a54ee1cd493f13b)
 
 # GLM
 set(GLM_VERSION 1.0.1)
