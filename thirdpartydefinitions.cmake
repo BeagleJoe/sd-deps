@@ -168,12 +168,12 @@ set(ZLIB_HASH SHA256=9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b7
 
 # libpng
 message(STATUS "Note special path handling (version in path) AND hard-coded 'libpng16'")
-set(PNG_VERSION 1.6.46)
+set(PNG_VERSION 1.6.47)
 set(PNG_PROJECT libpng-${PNG_VERSION})
 set(PNG_FILE ${PNG_PROJECT}.tar.gz)
 #set(PNG_URL https://sourceforge.net/projects/libpng/files/libpng16/${PNG_VERSION}/${PNG_FILE}/download)
 set(PNG_URL https://github.com/pnggroup/libpng/archive/refs/tags/v${PNG_VERSION}.tar.gz)
-set(PNG_HASH SHA256=767b01936f9620d4ab4cdf6ec348f6526f861f825648b610b1d604167dc738d2)
+set(PNG_HASH SHA256=631a4c58ea6c10c81f160c4b21fa8495b715d251698ebc2552077e8450f30454)
 
 # freetype
 message(STATUS "Note special path handling (version in path) AND hard-coded 'freetype2'")
@@ -210,11 +210,11 @@ set(OSG_HASH SHA256=0e9e3e4cc6f463f21a901934a95e9264b231a1d5db90f72dcb4b8cc94b0d
 # sqlite3
 message(STATUS "Note the YEAR in the path AND hard-coded filename")
 message(STATUS "Change the version in: patches/sqlite3-CMakeLists.txt")
-set(SQLITE3_VERSION 3.49.0)
+set(SQLITE3_VERSION 3.49.1)
 set(SQLITE3_PROJECT sqlite3-${SQLITE3_VERSION})
-set(SQLITE3_FILE sqlite-amalgamation-3490000.zip)
+set(SQLITE3_FILE sqlite-amalgamation-3490100.zip)
 set(SQLITE3_URL https://www.sqlite.org/2025/${SQLITE3_FILE})
-set(SQLITE3_HASH SHA256=cb6851ebad74913672014c20f642bbd7883552c4747780583a54ee1cd493f13b)
+set(SQLITE3_HASH SHA256=6cebd1d8403fc58c30e93939b246f3e6e58d0765a5cd50546f16c00fd805d2c3)
 
 # GLM
 set(GLM_VERSION 1.0.1)
