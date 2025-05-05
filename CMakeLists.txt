@@ -513,7 +513,7 @@ if(OPTION_OSG)
                                         -DBUILD_OSG_PLUGIN_IVE=ON
                                         -DBUILD_OSG_PLUGIN_JPEG=ON
                                         -DBUILD_OSG_PLUGIN_OSG=ON
-                                        -DBUILD_OSG_PLUGIN_OSGA=ON
+                                        -DBUILD_OSG_PLUGIN_OSGA=OFF
                                         -DBUILD_OSG_PLUGIN_OSGTGZ=ON
                                         -DBUILD_OSG_PLUGIN_PNG=ON
                                         -DBUILD_OSG_PLUGIN_RGB=ON
