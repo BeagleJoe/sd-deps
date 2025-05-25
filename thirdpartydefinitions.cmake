@@ -210,11 +210,11 @@ set(OSG_HASH SHA256=0e9e3e4cc6f463f21a901934a95e9264b231a1d5db90f72dcb4b8cc94b0d
 # sqlite3
 message(STATUS "Note the YEAR in the path AND hard-coded filename")
 message(STATUS "Change the version in: patches/sqlite3-CMakeLists.txt")
-set(SQLITE3_VERSION 3.49.1)
+set(SQLITE3_VERSION 3.49.2)
 set(SQLITE3_PROJECT sqlite3-${SQLITE3_VERSION})
-set(SQLITE3_FILE sqlite-amalgamation-3490100.zip)
+set(SQLITE3_FILE sqlite-amalgamation-3490200.zip)
 set(SQLITE3_URL https://www.sqlite.org/2025/${SQLITE3_FILE})
-set(SQLITE3_HASH SHA256=6cebd1d8403fc58c30e93939b246f3e6e58d0765a5cd50546f16c00fd805d2c3)
+set(SQLITE3_HASH SHA256=921fc725517a694df7df38a2a3dfede6684024b5788d9de464187c612afb5918)
 
 # GLM
 set(GLM_VERSION 1.0.1)
