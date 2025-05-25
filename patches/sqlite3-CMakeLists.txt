@@ -28,7 +28,11 @@ cmake_minimum_required(VERSION 2.8)
 
 project(sqlite3 C)
 
+<<<<<<< HEAD
 set(VERSION "3.43.0")
+=======
+set(VERSION "3.49.2")
+>>>>>>> trunk
 
 
 #include_directories(include)
