@@ -128,11 +128,11 @@ set(ENET_URL https://github.com/lsalzman/enet/archive/refs/tags/v${ENET_VERSION}
 set(ENET_HASH SHA256=28603c895f9ed24a846478180ee72c7376b39b4bb1287b73877e5eae7d96b0dd)
 
 # ogg
-set(OGG_VERSION 1.3.5)
+set(OGG_VERSION 1.3.6)
 set(OGG_PROJECT ogg-${OGG_VERSION})
 set(OGG_FILE lib${OGG_PROJECT}.tar.gz)
 set(OGG_URL http://downloads.xiph.org/releases/ogg/${OGG_FILE})
-set(OGG_HASH SHA256=0eb4b4b9420a0f51db142ba3f9c64b333f826532dc0f48c6410ae51f4799b664)
+set(OGG_HASH SHA256=83e6704730683d004d20e21b8f7f55dcb3383cdf84c0daedf30bde175f774638)
 
 # vorbis
 set(VORBIS_VERSION 1.3.7)
