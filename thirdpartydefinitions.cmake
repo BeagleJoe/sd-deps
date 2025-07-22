@@ -192,13 +192,13 @@ set(FREETYPE_LEGACY_URL https://sourceforge.net/projects/freetype/files/freetype
 set(FREETYPE_LEGACY_HASH SHA256=5c78216d6c5860ef694fde1418d20d69d0ac83ab346c21eb311bd45709e0d93a)
 
 # curl
-set(CURL_VERSION 8.14.1)
+set(CURL_VERSION 8.15.0)
 string(REPLACE "." "_" CURL_TAG ${CURL_VERSION})
 set(CURL_PROJECT curl-${CURL_VERSION})
 set(CURL_FILE ${CURL_PROJECT}.tar.bz2)
 #set(CURL_URL https://curl.se/download/${CURL_FILE})
 set(CURL_URL https://github.com/curl/curl/releases/download/curl-${CURL_TAG}/${CURL_FILE})
-set(CURL_HASH SHA256=5760ed3c1a6aac68793fc502114f35c3e088e8cd5c084c2d044abdf646ee48fb)
+set(CURL_HASH SHA256=699a6d2192322792c88088576cff5fe188452e6ea71e82ca74409f07ecc62563)
 
 # osg
 set(OSG_VERSION 3.6.5)
@@ -210,11 +210,11 @@ set(OSG_HASH SHA256=0e9e3e4cc6f463f21a901934a95e9264b231a1d5db90f72dcb4b8cc94b0d
 # sqlite3
 message(STATUS "Note the YEAR in the path AND hard-coded filename")
 message(STATUS "Change the version in: patches/sqlite3-CMakeLists.txt")
-set(SQLITE3_VERSION 3.50.2)
+set(SQLITE3_VERSION 3.50.3)
 set(SQLITE3_PROJECT sqlite3-${SQLITE3_VERSION})
-set(SQLITE3_FILE sqlite-amalgamation-3500200.zip)
+set(SQLITE3_FILE sqlite-amalgamation-3500300.zip)
 set(SQLITE3_URL https://www.sqlite.org/2025/${SQLITE3_FILE})
-set(SQLITE3_HASH SHA256=41716b44ac8777188c4c3f1f370f01c9cb9e3b6428eb5c981d086c35de2d9d3f)
+set(SQLITE3_HASH SHA256=9ad6d16cbc1df7cd55c8b55127c82a9bca5e9f287818de6dc87e04e73599d754)
 
 # GLM
 set(GLM_VERSION 1.0.1)
