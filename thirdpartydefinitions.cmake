@@ -249,11 +249,11 @@ set(LIBZIP_URL https://github.com/nih-at/libzip/releases/download/v${LIBZIP_VERS
 set(LIBZIP_HASH SHA256=82e9f2f2421f9d7c2466bbc3173cd09595a88ea37db0d559a9d0a2dc60dc722e)
 
 # OpenCL
-set(OPENCL_VERSION v2024.10.24)
+set(OPENCL_VERSION v2025.07.23)
 set(OPENCL_PROJECT OpenCL-SDK-${OPENCL_VERSION})
 set(OPENCL_FILE ${OPENCL_PROJECT}-Source.zip)
 set(OPENCL_URL https://github.com/KhronosGroup/OpenCL-SDK/releases/download/${OPENCL_VERSION}/${OPENCL_FILE})
-set(OPENCL_HASH SHA256=c2e3c8f4c1253395ca0b2e26f464da55ec0359854f45646afa606fe4d5ca0d3c)
+set(OPENCL_HASH SHA256=29dc06da27d264d8e8592d0ba3e5d3d3ecefb3394f808e67b70ad3124b291a38)
 
 # VulkanSceneGraph
 set(VSG_VERSION 1.1.10)
