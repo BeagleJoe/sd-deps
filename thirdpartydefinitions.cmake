@@ -177,12 +177,12 @@ set(PNG_HASH SHA256=71158e53cfdf2877bc99bcab33641d78df3f48e6e0daad030afe9cb8c031
 
 # freetype
 message(STATUS "Note special path handling (version in path) AND hard-coded 'freetype2'")
-set(FREETYPE_VERSION 2.13.3)
+set(FREETYPE_VERSION 2.14.0)
 set(FREETYPE_PROJECT freetype-${FREETYPE_VERSION})
 string(REPLACE "." "" FREETYPE_TAG ${FREETYPE_VERSION})
 set(FREETYPE_FILE ft${FREETYPE_TAG}.zip)
 set(FREETYPE_URL https://sourceforge.net/projects/freetype/files/freetype2/${FREETYPE_VERSION}/${FREETYPE_FILE}/download)
-set(FREETYPE_HASH SHA256=51be88151cbea18aeef9ee147c6e770c2ab8a4345425b62f0a7f9c221a6ad566)
+set(FREETYPE_HASH SHA256=c1e2eac0480b7f9b3cbc6bb0152764141983033e146e1dfd0a7d236b65c0e9f5)
 
 message(STATUS "Note special path handling (version in path) AND hard-coded 'freetype2'")
 set(FREETYPE_LEGACY_VERSION 2.10.4)
