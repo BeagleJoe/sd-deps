@@ -210,11 +210,11 @@ set(OSG_HASH SHA256=0e9e3e4cc6f463f21a901934a95e9264b231a1d5db90f72dcb4b8cc94b0d
 # sqlite3
 message(STATUS "Note the YEAR in the path AND hard-coded filename")
 message(STATUS "Change the version in: patches/sqlite3-CMakeLists.txt")
-set(SQLITE3_VERSION 3.50.4)
+set(SQLITE3_VERSION 3.51.0)
 set(SQLITE3_PROJECT sqlite3-${SQLITE3_VERSION})
-set(SQLITE3_FILE sqlite-amalgamation-3500400.zip)
+set(SQLITE3_FILE sqlite-amalgamation-3510000.zip)
 set(SQLITE3_URL https://www.sqlite.org/2025/${SQLITE3_FILE})
-set(SQLITE3_HASH SHA256=1d3049dd0f830a025a53105fc79fd2ab9431aea99e137809d064d8ee8356b032)
+set(SQLITE3_HASH SHA256=1caf7116f2910600d04473ad69d37ec538fa62fa36adccd37b5e0e43647c98be)
 
 # GLM
 set(GLM_VERSION 1.0.2)
@@ -261,7 +261,6 @@ set(VSG_PROJECT VulkanSceneGraph-${VSG_VERSION})
 set(VSG_FILE ${VSG_PROJECT}.tar.gz)
 set(VSG_URL https://github.com/vsg-dev/VulkanSceneGraph/archive/refs/tags/v${VSG_VERSION}.tar.gz)
 set(VSG_HASH SHA256=11d2ecaea0f10c717ea90fdd494a4e899d59b847b68dc1a47d1370de89f095e5)
-
 
 # TinyGLTF 
 set(TINYGLTF_VERSION 2.9.7)
