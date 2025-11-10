@@ -192,13 +192,13 @@ set(FREETYPE_LEGACY_URL https://sourceforge.net/projects/freetype/files/freetype
 set(FREETYPE_LEGACY_HASH SHA256=5c78216d6c5860ef694fde1418d20d69d0ac83ab346c21eb311bd45709e0d93a)
 
 # curl
-set(CURL_VERSION 8.16.0)
+set(CURL_VERSION 8.17.0)
 string(REPLACE "." "_" CURL_TAG ${CURL_VERSION})
 set(CURL_PROJECT curl-${CURL_VERSION})
 set(CURL_FILE ${CURL_PROJECT}.tar.bz2)
 #set(CURL_URL https://curl.se/download/${CURL_FILE})
 set(CURL_URL https://github.com/curl/curl/releases/download/curl-${CURL_TAG}/${CURL_FILE})
-set(CURL_HASH SHA256=9459180ab4933b30d0778ddd71c91fe2911fab731c46e59b3f4c8385b1596c91)
+set(CURL_HASH SHA256=230032528ce5f85594d4f3eace63364c4244ccc3c801b7f8db1982722f2761f4)
 
 # osg
 set(OSG_VERSION 3.6.5)
@@ -217,15 +217,15 @@ set(SQLITE3_URL https://www.sqlite.org/2025/${SQLITE3_FILE})
 set(SQLITE3_HASH SHA256=1d3049dd0f830a025a53105fc79fd2ab9431aea99e137809d064d8ee8356b032)
 
 # GLM
-set(GLM_VERSION 1.0.1)
+set(GLM_VERSION 1.0.2)
 set(GLM_PROJECT glm-${GLM_VERSION})
 set(GLM_FILE ${GLM_PROJECT},tar.gz)
 set(GLM_URL https://github.com/g-truc/glm/archive/refs/tags/${GLM_VERSION}.tar.gz)
-set(GLM_HASH SHA256=9f3174561fd26904b23f0db5e560971cbf9b3cbda0b280f04d5c379d03bf234c)
+set(GLM_HASH SHA256=19edf2e860297efab1c74950e6076bf4dad9de483826bc95e2e0f2c758a43f65)
 
 # TinyGLTF 
-set(TINYGLTF_VERSION 2.9.6)
+set(TINYGLTF_VERSION 2.9.7)
 set(TINYGLTF_PROJECT TinyGLTF-${TINYGLTF_VERSION})
 set(TINYGLTF_FILE ${TINYGLTF_PROJECT}.tar.gz)
 set(TINYGLTF_URL https://github.com/syoyo/tinygltf/archive/refs/tags/v${TINYGLTF_VERSION}.tar.gz)
-set(TINYGLTF_HASH SHA256=ba2c47a095136bfc8a5d085421e60eb8e8df3bca4ae36eb395084c1b264c6927)
+set(TINYGLTF_HASH SHA256=9d31cf7f22e81febaf1ad587d7722582c154f7d9125673ee46c0c594765e8f35)
