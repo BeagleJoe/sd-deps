@@ -246,6 +246,13 @@ if(OPTION_OPENAL)
          URL_HASH ${OPENAL_C17_HASH}
          CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS}
          DEPENDS ${SDL2_PROJECT})
+   elseif(MSVC_VERSION LESS 1930)
+      #message(WARNING "openal-soft versions newer than 1.25.0 need Visual Studio 2022 and CMAKE_SYSTEM_VERSION >= 10")
+      ExternalProject_Add(${OPENAL_C20_PROJECT}
+         URL ${OPENAL_C20_URL}
+         URL_HASH ${OPENAL_C20_HASH}
+         CMAKE_ARGS ${EXTERNALS_CMAKE_ARGS}
+         DEPENDS ${SDL2_PROJECT})
    else()
       if(${CMAKE_SYSTEM_VERSION} VERSION_LESS "10.0")
         set(OPENAL_ARGS ${EXTERNALS_CMAKE_ARGS} -DCMAKE_SYSTEM_VERSION=10.0)
