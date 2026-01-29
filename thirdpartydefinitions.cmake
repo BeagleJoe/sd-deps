@@ -58,11 +58,11 @@ set(SDL2_MIXER_URL https://github.com/libsdl-org/SDL_mixer/releases/download/rel
 set(SDL2_MIXER_HASH SHA256=cb760211b056bfe44f4a1e180cc7cb201137e4d1572f2002cc1be728efd22660)
 
 # OpenAL-soft
-set(OPENAL_PROJECT_VERSION 1.25.0)
+set(OPENAL_PROJECT_VERSION 1.25.1)
 set(OPENAL_PROJECT openal-soft-${OPENAL_PROJECT_VERSION})
 set(OPENAL_FILE ${OPENAL_PROJECT}.tar.gz)
 set(OPENAL_URL https://github.com/kcat/openal-soft/archive/refs/tags/${OPENAL_PROJECT_VERSION}.tar.gz)
-set(OPENAL_HASH SHA256=c07424e16cc53632a58f7ccaf7f4cd1cf2efde7fe4d2cdca1edbf618ea9470d1)
+set(OPENAL_HASH SHA256=5f8efe8dfba5e9307a50251ba615ace857c7fa9dddfe34130b83e213d7f7cf24)
 
 set(OPENAL_C20_PROJECT_VERSION 1.24.3)
 set(OPENAL_C20_PROJECT openal-soft-${OPENAL_C20_PROJECT_VERSION})
